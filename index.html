@@ -216,6 +216,14 @@ p{text-wrap:pretty}
 .bsoon::before{content:"";width:6px;height:6px;border-radius:50%;border:1px solid #5d5d64}
 .bgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 40px}
 @media (max-width:900px){.blog-feat{grid-template-columns:minmax(0,1fr);gap:28px}.blog-feat h2{font-size:28px}.bgrid{grid-template-columns:minmax(0,1fr);gap:0}}
+
+.twist img{position:absolute;left:554px;top:-188px;width:1054px;max-width:none;height:auto;z-index:0;pointer-events:none;user-select:none}
+.wrap:has(.twist) .g2>div:first-child{position:relative;z-index:1}
+@media (min-width: 1441px){.twist img{left:auto;right:calc((1240px - 100vw) / 2 - 268px)}}
+@media (max-width: 900px){
+.twist{position:relative}
+.twist img{left:-4%;top:-22%;width:150%}
+}
 </style>
 <script src="js/dc-lite.js"></script>
 </head>
@@ -288,7 +296,7 @@ p{text-wrap:pretty}
 <div style="display: flex; flex-wrap: wrap; gap: 12px"><a href="capabilities.html" class="btn" style="background: #ffffff; color: #0a0a0b">Explore capabilities →</a><a href="about.html" class="btn" style="border: 1px solid #3a3a42; color: #f4f4f3">About Stratos</a></div>
 
 </div>
-<div data-cut="origin" data-label="Start" class="hv" style="position: relative; height: 480px; border-radius: 6px; overflow: hidden; background: #000000"><img src="assets/lcht-hero.png" alt="Laser-cut hypotube with a fine slot pattern, curving through soft light on a black background" style="display: block; width: 100%; height: 100%; object-fit: cover"></div>
+<div data-cut="origin" data-label="Start" class="hv twist" style="height: 480px"><img src="assets/lcht-twist.webp" alt="Laser-cut hypotube with a fine slot pattern, twisting through soft light" width="1126" height="936" decoding="async" fetchpriority="high"></div>
 </div></div>
 </section>
 <section style="position: relative; padding: 96px 0">
