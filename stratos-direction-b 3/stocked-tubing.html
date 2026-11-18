@@ -1,0 +1,547 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stocked Tubing — Stratos Laser</title>
+<meta name="description" content="50+ materials and millions of feet of tubing on hand, so your parts start cutting right away.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/stratos-logo-white.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+body{margin:0;background:#000}
+a{color:#f0f0fa}a:hover{color:#ffffff}
+::selection{background:#24a8f2;color:#000}
+.b-root{font-family:'D-DIN',Arial,Verdana,sans-serif;color:#f0f0fa;background:#000;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.b-root *{box-sizing:border-box}
+.b-root a:focus-visible,.b-root button:focus-visible{outline:2px solid #24a8f2;outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:12px;z-index:100;background:#f0f0fa;color:#000;padding:12px 16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.skip:focus{left:60px}
+.skip:hover{color:#000}
+
+/* bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;height:84px;display:flex;align-items:center;gap:56px;padding:0 60px;color:#f0f0fa;
+  background:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%);transition:transform .5s cubic-bezier(.16,1,.3,1),color .35s ease,background .35s ease}
+.bar.hide{transform:translateY(-100%)}
+.bar.light{color:#0a0a0b;background:linear-gradient(rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 100%)}
+.home{display:flex;align-items:center;min-height:44px;color:inherit;flex:none}
+.home:hover{color:inherit}
+.logo{display:block;height:19px;width:auto}
+.links{display:flex;align-items:center;gap:30px;margin:0;padding:0;list-style:none}
+.links>li{position:relative}
+.nl{position:relative;display:flex;align-items:center;gap:7px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;color:inherit;text-decoration:none;
+  font:700 13px/1 'D-DIN',Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bar a.nl:hover,.bar button.nl:hover{color:inherit}
+.nl::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.nl:hover::after,.nl:focus-visible::after,.dd-open>.nl::after{transform:scaleX(1)}
+.chev{transition:transform .3s ease}
+.dd-open .chev,.has-dd:hover .chev{transform:rotate(180deg)}
+.dd{position:absolute;top:100%;left:-20px;min-width:230px;margin:0;padding:8px 0;list-style:none;background:#000;border:1px solid rgba(240,240,250,.14);
+  opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1),visibility 0s .35s}
+.has-dd:hover .dd,.has-dd:focus-within .dd,.dd-open .dd{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1)}
+.dd a{display:flex;align-items:center;min-height:44px;padding:0 20px;color:#f0f0fa;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dd a:hover{background:#f0f0fa;color:#000}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer;padding:0}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);border:0;padding:0;cursor:pointer;width:100%}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:61;width:min(400px,100%);background:#000;color:#f0f0fa;padding:20px 40px 40px;overflow-y:auto;animation:dIn .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes dIn{from{transform:translateX(100%)}to{transform:none}}
+.drawer .x{display:flex;margin:0 -10px 24px auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer}
+.drawer ul{list-style:none;margin:0;padding:0}
+.drawer li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid rgba(240,240,250,.14);color:#f0f0fa;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.drawer li.sub a{padding-left:18px;font-size:13px;min-height:46px;color:#c9c9d4}
+.drawer .grp{margin-top:28px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9a9aa6;padding-bottom:8px;border-bottom:1px solid rgba(240,240,250,.14)}
+
+/* panels */
+.panel{position:relative;overflow:hidden;min-height:620px;background:#000}
+.panel .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* the photographs are shot centred; widening them pushes the subject right, clear of the copy */
+.panel .bg-pattern,.panel .bg-proto{width:122%;left:0;right:auto}
+.panel .bg-facility{width:130%;left:0;right:auto}
+.hero .bg{left:auto;right:0;width:auto;aspect-ratio:1/1;max-width:none}
+.shade{position:absolute;inset:0;pointer-events:none}
+.dark .shade{background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.5) 28%,rgba(0,0,0,0) 56%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%)}
+.light{background:#f5f7fb;color:#0a0a0b}
+.light .shade{background:linear-gradient(90deg,rgba(245,247,251,.92) 0%,rgba(245,247,251,.75) 28%,rgba(245,247,251,0) 52%)}
+.copy{position:absolute;left:60px;top:50%;transform:translateY(-50%);max-width:620px;z-index:2}
+.hero .copy{top:auto;bottom:clamp(96px,14vh,150px);transform:none;max-width:780px}
+.head{margin:0;font-weight:700;text-transform:uppercase;font-size:48px;line-height:1.04;letter-spacing:.02em;text-wrap:balance}
+.hero .head{font-size:60px;line-height:.98;letter-spacing:.01em}
+.blurb{margin:18px 0 0;max-width:440px;font-size:17px;line-height:1.5;letter-spacing:.01em;color:rgba(240,240,250,.86)}
+.light .blurb{color:#2b2b31}
+.sx-btn{display:inline-flex;align-items:center;gap:14px;height:50px;margin-top:30px;padding:0 22px;border:1px solid rgba(240,240,250,.35);color:#f0f0fa;text-decoration:none;
+  font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:background .35s cubic-bezier(.16,1,.3,1),color .35s,border-color .35s}
+.sx-btn .arr{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.sx-btn:hover{background:#f0f0fa;border-color:#f0f0fa;color:#000}
+.sx-btn:hover .arr{transform:translateX(4px)}
+.light .sx-btn{border-color:rgba(10,10,11,.4);color:#0a0a0b}
+.light .sx-btn:hover{background:#0a0a0b;border-color:#0a0a0b;color:#f5f7fb}
+
+/* the one entrance: the first frame settles into place */
+.hero .bg{animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.hero .copy{animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .35s both}
+@keyframes heroImg{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:none}}
+@keyframes heroCopy{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* footer */
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px;min-height:96px;padding:28px 60px;background:#000;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#c9c9d4}
+.foot a{color:#f0f0fa;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+
+@media (max-width: 1240px){
+.links{display:none}
+.menu-btn{display:flex}
+.bar{gap:24px}
+}
+@media (max-width: 760px){
+.bar{height:68px;padding:0 24px}
+.copy,.hero .copy{left:24px;right:24px;top:auto;bottom:72px;transform:none;max-width:none}
+.head{font-size:34px;line-height:1.05}
+.hero .head{font-size:40px}
+.blurb{font-size:16px;margin-top:14px}
+.sx-btn{margin-top:24px}
+.hero .bg{left:0;right:0;top:12%;width:100%;height:auto}
+.panel .bg-pattern,.panel .bg-proto,.panel .bg-facility{width:100%;left:0}
+.bg-pattern{object-position:58% 50%}
+.bg-proto{object-position:72% 50%}
+.panel .bg-facility{height:76%;object-position:50% 40%}
+.dark .shade{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 32%,rgba(0,0,0,0) 62%)}
+.light .shade{background:linear-gradient(0deg,rgba(245,247,251,.96) 0%,rgba(245,247,251,.88) 40%,rgba(245,247,251,0) 64%)}
+.drawer{padding:16px 24px 32px}
+.foot{padding:28px 24px;gap:4px 28px}
+}
+@media (prefers-reduced-motion: reduce){
+.hero .bg,.hero .copy,.drawer{animation:none}
+.bar,.nl::after,.sx-btn,.sx-btn .arr,.dd{transition:none}
+}
+
+/* ---- sub-page blocks ---- */
+.nl[aria-current="page"]::after,.is-cur>.nl::after{transform:scaleX(1)}
+.pg-hero .copy{top:auto;bottom:clamp(96px,13vh,150px);transform:none;max-width:860px}
+.pg-hero .head{font-size:100px;line-height:.92;letter-spacing:0}
+.pg-hero .blurb{max-width:520px;font-size:18px;margin-top:22px}
+.pg-hero .bg{animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.pg-hero .copy{animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .35s both}
+.bg-lcht{object-position:70% 50%}
+.panel .bg-flat,.panel .bg-weld{width:122%;left:0;right:auto}
+.short{height:auto !important;min-height:0;padding:200px 60px 110px}
+.short .copy{position:static;transform:none;max-width:880px;animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .2s both}
+
+.blk{position:relative;background:#000;color:#f0f0fa;padding:140px 60px}
+.blk+.blk{padding-top:40px}
+.rule-top{border-top:1px solid rgba(240,240,250,.16)}
+.h2{margin:0;font-weight:700;text-transform:uppercase;font-size:48px;line-height:1.04;letter-spacing:.02em;max-width:900px;text-wrap:balance}
+.lede{margin:20px 0 0;max-width:560px;font-size:17px;line-height:1.6;color:#c9c9d4}
+
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.stats li{display:flex;flex-direction:column;gap:12px}
+.num{font-size:104px;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.num small{font-size:28px;letter-spacing:.06em;margin-left:10px;text-transform:uppercase}
+.num small.pre{margin:0 10px 0 0}
+.lab{font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.stats+.lede{margin-top:88px}
+
+.spec{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:60px;background:#000;color:#f0f0fa;padding:120px 60px}
+.spec.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.spec.flip .sc{order:2}
+.sc{max-width:540px}
+.kick{margin:0 0 6px;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:#c9c9d4}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 30px;margin:28px 0 4px;padding:0;list-style:none}
+.tab{position:relative;min-height:44px;padding:0;border:0;background:none;color:#9a9aa6;cursor:pointer;font:400 15px/1 'D-DIN',Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:color .25s}
+.tab:hover{color:#f0f0fa}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:#f0f0fa;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.tab.on{color:#f0f0fa}.tab.on::after{transform:scaleX(1)}
+.sc p{margin:20px 0 0;font-size:16px;line-height:1.65;color:#c9c9d4}
+.tbl{width:100%;margin-top:34px;border-collapse:collapse;font-size:16px}
+.tbl th,.tbl td{padding:18px 0;border-bottom:1px solid rgba(240,240,250,.22);vertical-align:top}
+.tbl tr:first-child th,.tbl tr:first-child td{border-top:1px solid rgba(240,240,250,.22)}
+.tbl th{text-align:left;font-weight:400;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4;padding-right:24px}
+.tbl td{text-align:right;font-variant-numeric:tabular-nums}
+.tbl.one td{text-align:left}
+.fig{display:flex;align-items:center;justify-content:center;min-height:520px}
+.fig img{display:block;width:100%;max-width:820px;height:auto}
+.fig>img{filter:brightness(1.5) contrast(1.1)}
+.fig [data-hairline]{max-width:820px;--hl-plate:#000 !important;--hl-edge:#ededf6 !important;--hl-mid:#a4a4b0 !important;--hl-lo:#5a5a64 !important}
+.fig>svg{width:min(100%,560px)}
+.fig svg{display:block;height:auto}
+.pairs{display:grid;gap:24px;width:100%;max-width:720px}
+.pairs figure{margin:0}
+.pairs figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.pairs figcaption b{font-weight:700;color:#f0f0fa}
+.note{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9a9aa6;margin-top:6px}
+.grades{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.grades span{font-size:120px;line-height:1;letter-spacing:-.01em}
+.grades em{font-style:normal;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#9a9aa6;margin-top:18px}
+
+.spec.three{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:48px;align-items:center}
+.surf{margin:0}
+.surf img{display:block;width:100%;height:auto}
+.surf figcaption{margin-top:14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.surf figcaption b{font-weight:700;color:#f0f0fa}
+.surf figcaption span{display:block;margin-top:6px;text-transform:none;letter-spacing:.01em;font-size:15px;line-height:1.5}
+.spec.three .sc .note{margin-top:22px;font-size:12px;line-height:1.5;letter-spacing:.1em;color:#9a9aa6}
+.nw{white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px;margin:64px 0 0;padding:0;list-style:none}
+.tiles li{border-top:1px solid rgba(240,240,250,.22);padding-top:24px}
+.tiles h3{margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tiles p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#c9c9d4;max-width:400px}
+
+.statement{margin:0;max-width:1080px;font-size:44px;line-height:1.22;font-weight:400;letter-spacing:0}
+.statement+.lede{margin-top:36px;max-width:640px;font-size:18px}
+
+.posts{margin:56px 0 0;padding:0;list-style:none;border-top:1px solid rgba(240,240,250,.22)}
+.posts li{display:grid;grid-template-columns:200px minmax(0,1fr) 160px;gap:40px;padding:34px 0;border-bottom:1px solid rgba(240,240,250,.22)}
+.posts .cat,.posts .when{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4;padding-top:6px}
+.posts .when{text-align:right;color:#9a9aa6}
+.posts h3{margin:0;font-size:26px;line-height:1.15;font-weight:700;text-transform:uppercase;letter-spacing:.02em;max-width:760px}
+.posts p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#c9c9d4;max-width:680px}
+.posts .feat h3{font-size:40px}
+
+.cta{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 60px;background:#000;color:#f0f0fa;padding:120px 60px;border-top:1px solid rgba(240,240,250,.16)}
+.cta .sx-btn{margin-top:0}
+
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+.form .wide{grid-column:1 / -1}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.field input,.field select,.field textarea{width:100%;min-height:56px;padding:16px 18px;border:1px solid rgba(240,240,250,.3);border-radius:0;background:#000;color:#f0f0fa;font:400 16px/1.4 'D-DIN',Arial,sans-serif;letter-spacing:.02em;transition:border-color .25s}
+.field textarea{min-height:150px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#9a9aa6;opacity:1}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer}
+.field select:has(option[value=""]:checked){color:#9a9aa6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#f0f0fa}
+.form .sx-btn{background:none;cursor:pointer;font-family:inherit}
+.c-head{font-size:72px;line-height:.95}
+.hint{margin:4px 0 0;font-size:14px;line-height:1.5;color:#9a9aa6}
+.sent{margin:0;font-size:16px;line-height:1.6;color:#f0f0fa}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:60px;align-items:start}
+.direct{margin-top:40px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.direct a{display:inline-flex;min-height:44px;align-items:center;margin-top:6px;font-size:20px;letter-spacing:.02em;text-transform:none;color:#f0f0fa}
+
+@media (max-width: 1100px){
+.spec,.spec.flip,.split{grid-template-columns:1fr}
+.spec.flip .sc{order:0}
+.spec.three{grid-template-columns:1fr 1fr}
+.spec.three .sc{grid-column:1 / -1;order:-1}
+.fig{min-height:0}
+.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+.num{font-size:80px}
+}
+@media (max-width: 760px){
+.pg-hero .head{font-size:52px}
+.pg-hero .blurb{font-size:16px}
+.short{padding:140px 24px 72px}
+.blk,.spec,.cta{padding:88px 24px}
+.blk+.blk{padding-top:24px}
+.h2{font-size:34px}
+.stats,.tiles{grid-template-columns:1fr;gap:36px}
+.spec.three{grid-template-columns:1fr}
+.num{font-size:72px}
+.stats+.lede{margin-top:56px}
+.grades span{font-size:72px}
+.statement{font-size:28px}
+.posts li{grid-template-columns:1fr;gap:10px}
+.posts .when{text-align:left;padding-top:0}
+.posts .feat h3,.posts h3{font-size:24px}
+.form{grid-template-columns:1fr}
+.c-head{font-size:44px}
+}
+@media (prefers-reduced-motion: reduce){
+.pg-hero .bg,.pg-hero .copy,.short .copy{animation:none}
+.tab::after{transition:none}
+}
+
+.st-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 60px}
+.st-top .lede a,.st-none a{color:#f0f0fa;text-underline-offset:4px}
+.st-search{position:relative;display:flex;align-items:center;gap:12px;width:min(100%,460px);border-bottom:1px solid rgba(240,240,250,.4);color:#c9c9d4;transition:border-color .25s}
+.st-search:focus-within{border-color:#f0f0fa}
+.st-search input{flex:1;min-width:0;min-height:56px;border:0;background:none;color:#f0f0fa;font:400 17px/1.3 'D-DIN',Arial,sans-serif;letter-spacing:.02em;outline:none}
+.st-search input::placeholder{color:#9a9aa6;opacity:1}
+.st-count{margin:48px 0 14px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.st-wrap{max-height:640px;overflow-y:auto;border-top:1px solid rgba(240,240,250,.22);border-bottom:1px solid rgba(240,240,250,.22);overscroll-behavior:contain;scrollbar-color:#3a3a42 transparent}
+.st-wrap:focus-visible{outline:2px solid #24a8f2;outline-offset:2px}
+.st-head{position:sticky;top:0;z-index:2;background:#000}
+.st-body{display:flex;flex-direction:column}
+.tr{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));align-items:center;border-bottom:1px solid rgba(240,240,250,.12)}
+.st-head .tr{border-bottom:1px solid rgba(240,240,250,.3)}
+.tr.gone{display:none}
+.st-body .tr:hover{background:#0d0d10}
+.th{display:flex}
+.th:not(.th-gauge){justify-content:flex-end}
+.sb{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border:0;background:none;cursor:pointer;color:#9a9aa6;font:400 13px/1 'D-DIN',Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.th-gauge .sb{padding-left:0}
+.sb:hover,.sb.on{color:#f0f0fa}
+.sb .u{text-transform:none;letter-spacing:.04em;color:#6f6f7a}
+.sarr path{opacity:.35;transition:opacity .2s}
+.sb.asc .up,.sb.desc .dn{opacity:1}
+.td{padding:16px 18px;font-size:17px;text-align:right;font-variant-numeric:tabular-nums;color:#e4e4ee}
+.td-gauge{padding-left:0;text-align:left;font-weight:700;letter-spacing:.04em;color:#f0f0fa}
+.st-none{margin:0;padding:28px 0;font-size:16px;color:#c9c9d4}
+.st-note{margin-top:16px}
+@media (max-width: 760px){
+.st-count{margin-top:32px}
+.st-wrap{max-height:70vh}
+.tr{grid-template-columns:minmax(0,1.25fr) repeat(3,minmax(0,1fr))}
+.sb{padding:0 6px;font-size:11px;letter-spacing:.06em;gap:4px;min-height:48px;white-space:normal;text-align:right}
+.sb .u{display:none}
+.td{padding:14px 6px;font-size:14px}
+}
+
+.tf-hero{background:#000}
+.tfield{position:absolute;inset:0;width:100%;height:100%;display:block;
+  -webkit-mask-image:radial-gradient(115% 100% at 0% 100%,rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 50%,#000 76%);mask-image:radial-gradient(115% 100% at 0% 100%,rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 50%,#000 76%);
+  animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.tfield ellipse,.tfield path{vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.tfield .bk{fill:#000;stroke:#5c5c66;stroke-width:1}
+.tfield .bd{fill:#000;stroke:none}
+.tfield .ln{fill:none;stroke:#d9d9e4;stroke-width:1}
+.tfield .fr{fill:#000;stroke:#ededf6;stroke-width:1}
+.tfield .bo{fill:#000;stroke:#8c8c98;stroke-width:1}
+.tfield .hi .bo{stroke:#24a8f2}
+@media (max-width: 760px){
+.tfield{-webkit-mask-image:linear-gradient(180deg,#000 30%,rgba(0,0,0,.15) 62%,rgba(0,0,0,0) 78%);mask-image:linear-gradient(180deg,#000 30%,rgba(0,0,0,.15) 62%,rgba(0,0,0,0) 78%)}
+}
+</style>
+<script src="js/dc-lite.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<template id="page">
+<div class="b-root">
+<a href="#main" class="skip">Skip to content</a>
+<header class="{{barCls}}">
+<a class="home" href="index.html" aria-label="Stratos home"><svg class="logo" viewBox="0 0 895.28 117.54" aria-hidden="true" style="fill: currentColor"><path d="M892.95,117.54c2.88.14,3.21-4.14.33-4.44-146.52-14.88-295.19-22.52-445.64-22.52S148.52,98.22,2,113.1c-2.87.29-2.55,4.58.33,4.44,147.53-7.19,295.99-10.83,445.31-10.83s297.78,3.64,445.31,10.83Z" style="fill: #24a8f2"></path><g><path d="M828.25,58.31c-3.82,3.73-9.27,5.81-14.74,5.82l-83.64.18.04-11.55,78.47-.07c4.91,0,7.99-2.81,8-7.3.01-3.94-2.83-7.42-7.5-7.41l-47.14.11c-6.72.02-13.22.03-19.53-1.38-8.39-1.87-13.43-8.46-13.29-16.98.09-5.29.69-10.79,4.82-14.54,3.51-3.18,8.63-4.84,13.78-4.86l80.75-.33c.21,4.17.39,7.79-.04,11.84l-75.72-.08c-4.21,0-7.1,2.44-7.37,5.99s1.86,7.76,6.38,7.78l53.7.19c5.78.02,11.17.55,16.43,2.39,7.4,2.59,11.29,9.18,10.9,17-.23,4.65-.52,9.51-4.3,13.2Z"></path> <path d="M158.13,60.44c-4.3,2.61-9.24,3.8-14.3,3.8l-79.9-.02-.59-11.6,78.08.05c4.79,0,7.79-3.29,7.75-7.17-.05-4.11-2.88-7.4-7.49-7.42l-56.51-.24c-6.3-.03-13.18-1.4-17.61-6.01-6.41-6.66-6.36-18.5-.57-25.58,3.29-4.02,9.13-5.88,14.43-5.9L160.24,0l.04,11.99-73.77-.15c-4.46,0-7.03,3.02-7.11,6.71-.1,4.22,2.81,7.09,7.53,7.1l51.39.04c4.91,0,9.53.56,14.08,1.59,8.61,1.96,12.94,9.17,12.67,17.85-.18,5.89-1.29,11.87-6.94,15.3Z"></path> <path d="M387.22,64.04c-6.75-.12-14.73,1.3-21.48-.2-9.79-6.17-18.15-13.82-27.17-21.16l-39.96-.21-.4,21.71-16.82.08.03-64.18,81.03.16c6.25.01,11.89,1.92,16.65,5.3,8.62,7.27,7.8,26.31-1.6,33.03-5.14,3.67-11.27,3.67-18.01,4.18l27.74,21.3ZM368.16,21.65c.03-5.33-3-9.74-8.59-9.76l-61.21-.24-.05,19.68,62.33-.3c5.22-.03,7.49-4.85,7.51-9.38Z"></path> <path d="M714.96,45.35c-.88,11.9-9.04,17.32-20.22,19.02l-68.8-.06c-12.01-1.9-20.02-7.01-20.73-19.99-.58-10.56-1.93-29.87,5.11-37.43,4.14-4.45,10.42-6.73,16.8-6.73l63.26.03c12.25,0,22.74,4.55,24.66,17.76.24,9.16.6,18.2-.08,27.4ZM688.37,52.57c6.02,0,9.61-4.67,9.64-9.81l.14-19.87c.05-6.76-4.56-11.12-11.44-11.11h-54.5c-6.01.02-9.88,4.48-9.89,9.99l-.05,20.65c-.02,5.87,4.25,10.23,10.38,10.22l55.72-.08Z"></path> <path d="M482.24,48.61l-60.21-.13-11.36,15.71-20.34-.07,30.76-40.5,13.14-17.8c1.85-2.51,4.21-5.4,7.54-5.43l18.25-.17c2.27-.02,5.11.63,6.69,2.68l47.07,61.16-20,.14-11.53-15.59ZM473.86,37.75l-17.64-23.7c-1.48-1.36-2.79-2.57-4.61-2.49-1.61.07-3.35.96-4.53,2.57l-17.55,23.86,44.34-.24Z"></path> <path d="M229.58,64.06l-17.19.53.07-52.56-40.55.15.19-12.04,97.12.05c.06,4.33.4,8.13-.11,11.82l-39.43.09-.1,51.96Z"></path> <path d="M556.41,64.23l-16.94-.07.06-52.18-40.42-.05c-.24-4.31-.21-7.8.04-11.84l97.53-.03c.46,4.13.33,7.7.1,11.91l-40.05.09-.33,52.17Z"></path></g></svg></a>
+<nav aria-label="Main">
+<ul class="links">
+<li><a class="nl" href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a class="nl" href="flat-sheet-cutting.html">Flat Sheet Cutting</a></li><li><a class="nl" href="laser-welding.html">Laser Welding</a></li><li><a class="nl" href="centerless-grinding.html">Centerless Grinding</a></li><li><a class="nl" href="stocked-tubing.html" aria-current="page">Stocked Tubing</a></li>
+<li class="{{ddCls}}"><button type="button" class="nl" aria-expanded="{{ddExp}}" aria-controls="company-menu" onClick="{{toggleDd}}">Company <svg class="chev" aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" style="fill: none; stroke: currentColor; stroke-width: 1.5"><path d="M2 3.5L5 6.5L8 3.5"></path></svg></button>
+<ul id="company-menu" class="dd"><li><a href="company.html#why-stratos">Why Stratos</a></li><li><a href="company.html#mission">Mission Statement</a></li><li><a href="company.html#core-values">Core Values</a></li><li><a href="content.html">Content</a></li></ul></li>
+<li><a class="nl" href="contact.html">Contact</a></li>
+</ul>
+</nav>
+<button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="{{menuExp}}" aria-controls="drawer" onClick="{{openMenu}}"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M3 7H21M3 12H21M3 17H21"></path></svg></button>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="scrim" aria-label="Close menu" onClick="{{closeMenu}}"></button>
+<nav id="drawer" class="drawer" aria-label="Menu">
+<button type="button" class="x" aria-label="Close menu" onClick="{{closeMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M4 4L18 18M18 4L4 18"></path></svg></button>
+<ul><li><a href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a href="flat-sheet-cutting.html">Flat Sheet Cutting</a></li><li><a href="laser-welding.html">Laser Welding</a></li><li><a href="centerless-grinding.html">Centerless Grinding</a></li><li><a href="stocked-tubing.html" aria-current="page">Stocked Tubing</a></li></ul>
+<div class="grp">Company</div>
+<ul><li class="sub"><a href="company.html#why-stratos">Why Stratos</a></li><li class="sub"><a href="company.html#mission">Mission Statement</a></li><li class="sub"><a href="company.html#core-values">Core Values</a></li><li class="sub"><a href="content.html">Content</a></li><li><a href="contact.html">Contact</a></li></ul>
+</nav>
+</sc-if>
+<main id="main">
+<section id="top" class="panel pg-hero dark tf-hero" data-tone="dark" aria-labelledby="top-h" style="height: {{secH}}">
+<svg class="tfield" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g class="tb" data-c="0" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="6" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="0"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="0" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb hi" data-c="6" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="1"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="0" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="6" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="2"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="0" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="6" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="3"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="0" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="6" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="4"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="0" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="1" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="2" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="3" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="4" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="5" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="6" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="7" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g><g class="tb" data-c="8" data-r="5"><ellipse class="bk"></ellipse><path class="bd"></path><path class="ln"></path><ellipse class="fr"></ellipse><ellipse class="bo"></ellipse></g></svg>
+<div class="copy">
+<h1 id="top-h" class="head">Stocked<br>tubing</h1>
+<p class="blurb">50+ materials and millions of feet of tubing on hand, so your parts start cutting right away.</p>
+<a class="sx-btn" href="contact.html">Request a quote <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+<section id="numbers" class="blk" data-tone="dark" aria-label="Key figures">
+<ul class="stats"><li><span class="num">50+<small></small></span><span class="lab">Materials on hand</span></li><li><span class="num">2<small>days</small></span><span class="lab">As fast as</span></li><li><span class="num">1M<small></small></span><span class="lab">Parts, from one</span></li></ul>
+<p class="lede">We move fast, which means keeping the materials you need on hand at all times.</p>
+</section>
+<section id="fast" class="blk" data-tone="dark" aria-labelledby="fast-h">
+<h2 id="fast-h" class="h2">Stocked hypotubes. Fast parts.</h2>
+
+<ul class="tiles"><li><h3>As fast as 2 days</h3><p>Rapid prototyping and R&amp;D parts, turned around quickly so you can build faster.</p></li><li><h3>1 part or 1,000,000</h3><p>The same custom-built equipment and process from prototype to production volume.</p></li><li><h3>ISO 13485 certified</h3><p>In-process measurement and certifications delivered with every lot.</p></li></ul>
+</section>
+<section id="on-the-shelf" class="spec" data-tone="dark" aria-labelledby="on-the-shelf-h" style="min-height: {{secH}}">
+<div class="sc">
+<p class="kick">Materials</p>
+<h2 id="on-the-shelf-h" class="h2">Metals cut to spec.</h2>
+<ul class="tabs" role="tablist" aria-label="Stainless steel and more"><li><button type="button" role="tab" id="mat-t0" class="{{matCls0}}" aria-selected="{{matSel0}}" aria-controls="mat-p" onClick="{{matGo0}}">Stainless steel</button></li><li><button type="button" role="tab" id="mat-t1" class="{{matCls1}}" aria-selected="{{matSel1}}" aria-controls="mat-p" onClick="{{matGo1}}">Nitinol</button></li><li><button type="button" role="tab" id="mat-t2" class="{{matCls2}}" aria-selected="{{matSel2}}" aria-controls="mat-p" onClick="{{matGo2}}">Cobalt-chromium</button></li></ul>
+<div id="mat-p" role="tabpanel"><sc-if value="{{matOn0}}" hint-placeholder-val="{{true}}"><p>Corrosion resistance, strength and biocompatibility for catheter shafts, implants and precision components.</p></sc-if><sc-if value="{{matOn1}}" hint-placeholder-val="{{false}}"><p>Shape-memory and superelastic behavior for minimally invasive devices needing flexibility and recovery.</p></sc-if><sc-if value="{{matOn2}}" hint-placeholder-val="{{false}}"><p>Exceptional strength, fatigue resistance and durability for implantable and structural components.</p></sc-if></div>
+<p>A wide range of medical-grade metals, processed on custom-built machinery. Don’t see the material you need? Let us know.</p>
+<a class="sx-btn" href="stocked-tubing.html">We stock millions of feet <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+<div class="fig"><sc-if value="{{matOn0}}" hint-placeholder-val="{{true}}"><div class="grades" aria-hidden="true"><span>304</span><span>316</span><span>17-7</span><em>Grades</em></div></sc-if><sc-if value="{{matOn1}}" hint-placeholder-val="{{false}}"><div class="grades" aria-hidden="true"><span>NiTi</span><em>Superelastic</em></div></sc-if><sc-if value="{{matOn2}}" hint-placeholder-val="{{false}}"><div class="grades" aria-hidden="true"><span>L605</span><span>MP35N</span><em>Grades</em></div></sc-if></div>
+</section>
+<section id="stock-list" class="blk rule-top" data-tone="dark" aria-labelledby="stock-list-h">
+<div class="st-top">
+<div>
+<p class="kick">1M+ feet of stocked tubing on-site</p>
+<h2 id="stock-list-h" class="h2">Stocked hypotubes.</h2>
+<p class="lede">No matter what project you’re working on, we’ve got the tubes you need. Check our list below, and if you don’t see what you need, <a href="contact.html">ask us</a>.</p>
+</div>
+<div class="st-search" role="search">
+<label class="vh" for="tube-q">Search stocked tubes</label>
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" style="fill: none; stroke: currentColor; stroke-width: 1.5"><circle cx="7.5" cy="7.5" r="6"></circle><path d="M12 12L17 17"></path></svg>
+<input id="tube-q" type="search" autocomplete="off" spellcheck="false" placeholder="Search by gauge or size, like 19G or .042" onInput="{{tubeQ}}">
+</div>
+</div>
+<p class="st-count" aria-live="polite">{{tubeCount}}</p>
+<div class="st-wrap" tabindex="0" role="region" aria-label="Stocked tubes, scrollable">
+<div role="table" class="st" aria-labelledby="stock-list-h" aria-rowcount="120">
+<div role="rowgroup" class="st-head"><div role="row" class="tr"><div role="columnheader" class="th th-gauge" aria-sort="{{as_gauge}}"><button type="button" class="{{sc_gauge}}" onClick="{{sort_gauge}}">Gauge <svg class="sarr" aria-hidden="true" width="9" height="12" viewBox="0 0 9 12" style="fill: none; stroke: currentColor; stroke-width: 1.3"><path class="up" d="M1 4.5L4.5 1L8 4.5"></path><path class="dn" d="M1 7.5L4.5 11L8 7.5"></path></svg></button></div><div role="columnheader" class="th th-id" aria-sort="{{as_id}}"><button type="button" class="{{sc_id}}" onClick="{{sort_id}}">Inner diameter <span class=u>in</span> <svg class="sarr" aria-hidden="true" width="9" height="12" viewBox="0 0 9 12" style="fill: none; stroke: currentColor; stroke-width: 1.3"><path class="up" d="M1 4.5L4.5 1L8 4.5"></path><path class="dn" d="M1 7.5L4.5 11L8 7.5"></path></svg></button></div><div role="columnheader" class="th th-od" aria-sort="{{as_od}}"><button type="button" class="{{sc_od}}" onClick="{{sort_od}}">Outer diameter <span class=u>in</span> <svg class="sarr" aria-hidden="true" width="9" height="12" viewBox="0 0 9 12" style="fill: none; stroke: currentColor; stroke-width: 1.3"><path class="up" d="M1 4.5L4.5 1L8 4.5"></path><path class="dn" d="M1 7.5L4.5 11L8 7.5"></path></svg></button></div><div role="columnheader" class="th th-wall" aria-sort="{{as_wall}}"><button type="button" class="{{sc_wall}}" onClick="{{sort_wall}}">Wall thickness <span class=u>in</span> <svg class="sarr" aria-hidden="true" width="9" height="12" viewBox="0 0 9 12" style="fill: none; stroke: currentColor; stroke-width: 1.3"><path class="up" d="M1 4.5L4.5 1L8 4.5"></path><path class="dn" d="M1 7.5L4.5 11L8 7.5"></path></svg></button></div></div></div>
+<div role="rowgroup" class="st-body"><div role="row" class="{{rc0}}" style="order: {{ro0}}"><div role="cell" class="td td-gauge">1/16 x .012</div><div role="cell" class="td">0.038"</div><div role="cell" class="td">0.063"</div><div role="cell" class="td">0.012"</div></div><div role="row" class="{{rc1}}" style="order: {{ro1}}"><div role="cell" class="td td-gauge">1/4" x .010</div><div role="cell" class="td">0.230"</div><div role="cell" class="td">0.250"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc2}}" style="order: {{ro2}}"><div role="cell" class="td td-gauge">1/4" x .020</div><div role="cell" class="td">0.210"</div><div role="cell" class="td">0.250"</div><div role="cell" class="td">0.020"</div></div><div role="row" class="{{rc3}}" style="order: {{ro3}}"><div role="cell" class="td td-gauge">1/8 x .005</div><div role="cell" class="td">0.115"</div><div role="cell" class="td">0.125"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc4}}" style="order: {{ro4}}"><div role="cell" class="td td-gauge">1/8 x .010</div><div role="cell" class="td">0.105"</div><div role="cell" class="td">0.125"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc5}}" style="order: {{ro5}}"><div role="cell" class="td td-gauge">10.5G</div><div role="cell" class="td">0.106"</div><div role="cell" class="td">0.126"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc6}}" style="order: {{ro6}}"><div role="cell" class="td td-gauge">10G-RW</div><div role="cell" class="td">0.106"</div><div role="cell" class="td">0.134"</div><div role="cell" class="td">0.014"</div></div><div role="row" class="{{rc7}}" style="order: {{ro7}}"><div role="cell" class="td td-gauge">10G-TW</div><div role="cell" class="td">0.114"</div><div role="cell" class="td">0.134"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc8}}" style="order: {{ro8}}"><div role="cell" class="td td-gauge">10G-UTW</div><div role="cell" class="td">0.122"</div><div role="cell" class="td">0.134"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc9}}" style="order: {{ro9}}"><div role="cell" class="td td-gauge">10G-XTW</div><div role="cell" class="td">0.118"</div><div role="cell" class="td">0.134"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc10}}" style="order: {{ro10}}"><div role="cell" class="td td-gauge">11.5G</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.115"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc11}}" style="order: {{ro11}}"><div role="cell" class="td td-gauge">11G-RW</div><div role="cell" class="td">0.094"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.013"</div></div><div role="row" class="{{rc12}}" style="order: {{ro12}}"><div role="cell" class="td td-gauge">11G-TW</div><div role="cell" class="td">0.100"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc13}}" style="order: {{ro13}}"><div role="cell" class="td td-gauge">11G-UTW</div><div role="cell" class="td">0.108"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc14}}" style="order: {{ro14}}"><div role="cell" class="td td-gauge">11G-XTW</div><div role="cell" class="td">0.104"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc15}}" style="order: {{ro15}}"><div role="cell" class="td td-gauge">11G-XXTW</div><div role="cell" class="td">0.112"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc16}}" style="order: {{ro16}}"><div role="cell" class="td td-gauge">11HV</div><div role="cell" class="td">0.090"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc17}}" style="order: {{ro17}}"><div role="cell" class="td td-gauge">11X</div><div role="cell" class="td">0.106"</div><div role="cell" class="td">0.120"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc18}}" style="order: {{ro18}}"><div role="cell" class="td td-gauge">12G-H</div><div role="cell" class="td">0.077"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.016"</div></div><div role="row" class="{{rc19}}" style="order: {{ro19}}"><div role="cell" class="td td-gauge">12G-RW</div><div role="cell" class="td">0.085"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.012"</div></div><div role="row" class="{{rc20}}" style="order: {{ro20}}"><div role="cell" class="td td-gauge">12G-SP</div><div role="cell" class="td">0.091"</div><div role="cell" class="td">0.105"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc21}}" style="order: {{ro21}}"><div role="cell" class="td td-gauge">12G-TW</div><div role="cell" class="td">0.091"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc22}}" style="order: {{ro22}}"><div role="cell" class="td td-gauge">12G-TW</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc23}}" style="order: {{ro23}}"><div role="cell" class="td td-gauge">12G-UTW</div><div role="cell" class="td">0.099"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc24}}" style="order: {{ro24}}"><div role="cell" class="td td-gauge">12G-XTW</div><div role="cell" class="td">0.097"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc25}}" style="order: {{ro25}}"><div role="cell" class="td td-gauge">12G-XX</div><div role="cell" class="td">0.100"</div><div role="cell" class="td">0.109"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc26}}" style="order: {{ro26}}"><div role="cell" class="td td-gauge">13.5G</div><div role="cell" class="td">0.071"</div><div role="cell" class="td">0.089"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc27}}" style="order: {{ro27}}"><div role="cell" class="td td-gauge">13.5G-SP</div><div role="cell" class="td">0.081"</div><div role="cell" class="td">0.087"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc28}}" style="order: {{ro28}}"><div role="cell" class="td td-gauge">13G-RW</div><div role="cell" class="td">0.071"</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.012"</div></div><div role="row" class="{{rc29}}" style="order: {{ro29}}"><div role="cell" class="td td-gauge">13G-TW</div><div role="cell" class="td">0.077"</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc30}}" style="order: {{ro30}}"><div role="cell" class="td td-gauge">13G-UTW</div><div role="cell" class="td">0.085"</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc31}}" style="order: {{ro31}}"><div role="cell" class="td td-gauge">13G-XTW</div><div role="cell" class="td">0.081"</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc32}}" style="order: {{ro32}}"><div role="cell" class="td td-gauge">13G-XXTW</div><div role="cell" class="td">0.090"</div><div role="cell" class="td">0.095"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc33}}" style="order: {{ro33}}"><div role="cell" class="td td-gauge">14.5G-SP</div><div role="cell" class="td">0.071"</div><div role="cell" class="td">0.076"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc34}}" style="order: {{ro34}}"><div role="cell" class="td td-gauge">14.5G-SP2</div><div role="cell" class="td">0.068"</div><div role="cell" class="td">0.074"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc35}}" style="order: {{ro35}}"><div role="cell" class="td td-gauge">14.5G-TW</div><div role="cell" class="td">0.063"</div><div role="cell" class="td">0.078"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc36}}" style="order: {{ro36}}"><div role="cell" class="td td-gauge">14G-RW</div><div role="cell" class="td">0.063"</div><div role="cell" class="td">0.083"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc37}}" style="order: {{ro37}}"><div role="cell" class="td td-gauge">14G-TW</div><div role="cell" class="td">0.067"</div><div role="cell" class="td">0.083"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc38}}" style="order: {{ro38}}"><div role="cell" class="td td-gauge">14G-UTW</div><div role="cell" class="td">0.075"</div><div role="cell" class="td">0.083"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc39}}" style="order: {{ro39}}"><div role="cell" class="td td-gauge">14G-XTW</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.083"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc40}}" style="order: {{ro40}}"><div role="cell" class="td td-gauge">14G-XXTW</div><div role="cell" class="td">0.077"</div><div role="cell" class="td">0.083"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc41}}" style="order: {{ro41}}"><div role="cell" class="td td-gauge">15G-HW</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.011"</div></div><div role="row" class="{{rc42}}" style="order: {{ro42}}"><div role="cell" class="td td-gauge">15G-RW</div><div role="cell" class="td">0.054"</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc43}}" style="order: {{ro43}}"><div role="cell" class="td td-gauge">15G-TW</div><div role="cell" class="td">0.061"</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc44}}" style="order: {{ro44}}"><div role="cell" class="td td-gauge">15G-UTW</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc45}}" style="order: {{ro45}}"><div role="cell" class="td td-gauge">15G-XTW</div><div role="cell" class="td">0.063"</div><div role="cell" class="td">0.072"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc46}}" style="order: {{ro46}}"><div role="cell" class="td td-gauge">16.5G-TW</div><div role="cell" class="td">0.052"</div><div role="cell" class="td">0.062"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc47}}" style="order: {{ro47}}"><div role="cell" class="td td-gauge">16G-RW</div><div role="cell" class="td">0.047"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc48}}" style="order: {{ro48}}"><div role="cell" class="td td-gauge">16G-TW</div><div role="cell" class="td">0.054"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc49}}" style="order: {{ro49}}"><div role="cell" class="td td-gauge">16G-UTW</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc50}}" style="order: {{ro50}}"><div role="cell" class="td td-gauge">16G-XTW</div><div role="cell" class="td">0.056"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc51}}" style="order: {{ro51}}"><div role="cell" class="td td-gauge">16TW</div><div role="cell" class="td">0.053"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc52}}" style="order: {{ro52}}"><div role="cell" class="td td-gauge">16XX</div><div role="cell" class="td">0.060"</div><div role="cell" class="td">0.065"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc53}}" style="order: {{ro53}}"><div role="cell" class="td td-gauge">17.5G</div><div role="cell" class="td">0.046"</div><div role="cell" class="td">0.056"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc54}}" style="order: {{ro54}}"><div role="cell" class="td td-gauge">17.5G-TW</div><div role="cell" class="td">0.052"</div><div role="cell" class="td">0.056"</div><div role="cell" class="td">0.002"</div></div><div role="row" class="{{rc55}}" style="order: {{ro55}}"><div role="cell" class="td td-gauge">17G-HW</div><div role="cell" class="td">0.039"</div><div role="cell" class="td">0.059"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc56}}" style="order: {{ro56}}"><div role="cell" class="td td-gauge">17G-RW</div><div role="cell" class="td">0.043"</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc57}}" style="order: {{ro57}}"><div role="cell" class="td td-gauge">17G-TW</div><div role="cell" class="td">0.048"</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc58}}" style="order: {{ro58}}"><div role="cell" class="td td-gauge">17G-UTW</div><div role="cell" class="td">0.052"</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc59}}" style="order: {{ro59}}"><div role="cell" class="td td-gauge">17G-XTW</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc60}}" style="order: {{ro60}}"><div role="cell" class="td td-gauge">17S</div><div role="cell" class="td">0.042"</div><div role="cell" class="td">0.058"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc61}}" style="order: {{ro61}}"><div role="cell" class="td td-gauge">18.5G-RW</div><div role="cell" class="td">0.033"</div><div role="cell" class="td">0.046"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc62}}" style="order: {{ro62}}"><div role="cell" class="td td-gauge">18G-RW</div><div role="cell" class="td">0.033"</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.009"</div></div><div role="row" class="{{rc63}}" style="order: {{ro63}}"><div role="cell" class="td td-gauge">18G-TW</div><div role="cell" class="td">0.038"</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc64}}" style="order: {{ro64}}"><div role="cell" class="td td-gauge">18G-UTW</div><div role="cell" class="td">0.045"</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc65}}" style="order: {{ro65}}"><div role="cell" class="td td-gauge">18G-XTW</div><div role="cell" class="td">0.042"</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc66}}" style="order: {{ro66}}"><div role="cell" class="td td-gauge">18H</div><div role="cell" class="td">0.030"</div><div role="cell" class="td">0.050"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc67}}" style="order: {{ro67}}"><div role="cell" class="td td-gauge">19G-HW</div><div role="cell" class="td">0.023"</div><div role="cell" class="td">0.043"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc68}}" style="order: {{ro68}}"><div role="cell" class="td td-gauge">19G-TW</div><div role="cell" class="td">0.033"</div><div role="cell" class="td">0.042"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc69}}" style="order: {{ro69}}"><div role="cell" class="td td-gauge">19G-UTW</div><div role="cell" class="td">0.038"</div><div role="cell" class="td">0.043"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc70}}" style="order: {{ro70}}"><div role="cell" class="td td-gauge">19G-XTW</div><div role="cell" class="td">0.035"</div><div role="cell" class="td">0.042"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc71}}" style="order: {{ro71}}"><div role="cell" class="td td-gauge">19G-XXTW</div><div role="cell" class="td">0.037"</div><div role="cell" class="td">0.042"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc72}}" style="order: {{ro72}}"><div role="cell" class="td td-gauge">20G-RW</div><div role="cell" class="td">0.024"</div><div role="cell" class="td">0.036"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc73}}" style="order: {{ro73}}"><div role="cell" class="td td-gauge">20G-TW</div><div role="cell" class="td">0.026"</div><div role="cell" class="td">0.036"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc74}}" style="order: {{ro74}}"><div role="cell" class="td td-gauge">20G-UTW</div><div role="cell" class="td">0.031"</div><div role="cell" class="td">0.036"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc75}}" style="order: {{ro75}}"><div role="cell" class="td td-gauge">20G-XTW</div><div role="cell" class="td">0.028"</div><div role="cell" class="td">0.036"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc76}}" style="order: {{ro76}}"><div role="cell" class="td td-gauge">21G-HW</div><div role="cell" class="td">0.016"</div><div role="cell" class="td">0.032"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc77}}" style="order: {{ro77}}"><div role="cell" class="td td-gauge">21G-TW</div><div role="cell" class="td">0.023"</div><div role="cell" class="td">0.032"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc78}}" style="order: {{ro78}}"><div role="cell" class="td td-gauge">21G-UTW</div><div role="cell" class="td">0.027"</div><div role="cell" class="td">0.032"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc79}}" style="order: {{ro79}}"><div role="cell" class="td td-gauge">21G-XTW</div><div role="cell" class="td">0.026"</div><div role="cell" class="td">0.032"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc80}}" style="order: {{ro80}}"><div role="cell" class="td td-gauge">21H</div><div role="cell" class="td">0.017"</div><div role="cell" class="td">0.032"</div><div role="cell" class="td">0.008"</div></div><div role="row" class="{{rc81}}" style="order: {{ro81}}"><div role="cell" class="td td-gauge">22G-UTW</div><div role="cell" class="td">0.024"</div><div role="cell" class="td">0.028"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc82}}" style="order: {{ro82}}"><div role="cell" class="td td-gauge">23G-UTW</div><div role="cell" class="td">0.021"</div><div role="cell" class="td">0.025"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc83}}" style="order: {{ro83}}"><div role="cell" class="td td-gauge">3/8" x .010</div><div role="cell" class="td">0.355"</div><div role="cell" class="td">0.375"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc84}}" style="order: {{ro84}}"><div role="cell" class="td td-gauge">3G-RW</div><div role="cell" class="td">0.219"</div><div role="cell" class="td">0.259"</div><div role="cell" class="td">0.020"</div></div><div role="row" class="{{rc85}}" style="order: {{ro85}}"><div role="cell" class="td td-gauge">3G-TW</div><div role="cell" class="td">0.229"</div><div role="cell" class="td">0.259"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc86}}" style="order: {{ro86}}"><div role="cell" class="td td-gauge">3G-XTW</div><div role="cell" class="td">0.239"</div><div role="cell" class="td">0.259"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc87}}" style="order: {{ro87}}"><div role="cell" class="td td-gauge">4G-RW</div><div role="cell" class="td">0.198"</div><div role="cell" class="td">0.238"</div><div role="cell" class="td">0.020"</div></div><div role="row" class="{{rc88}}" style="order: {{ro88}}"><div role="cell" class="td td-gauge">4G-TW</div><div role="cell" class="td">0.208"</div><div role="cell" class="td">0.238"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc89}}" style="order: {{ro89}}"><div role="cell" class="td td-gauge">4G-XTW</div><div role="cell" class="td">0.218"</div><div role="cell" class="td">0.238"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc90}}" style="order: {{ro90}}"><div role="cell" class="td td-gauge">5.5G</div><div role="cell" class="td">0.189"</div><div role="cell" class="td">0.211"</div><div role="cell" class="td">0.011"</div></div><div role="row" class="{{rc91}}" style="order: {{ro91}}"><div role="cell" class="td td-gauge">5G-RW</div><div role="cell" class="td">0.189"</div><div role="cell" class="td">0.219"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc92}}" style="order: {{ro92}}"><div role="cell" class="td td-gauge">5G-TW</div><div role="cell" class="td">0.199"</div><div role="cell" class="td">0.219"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc93}}" style="order: {{ro93}}"><div role="cell" class="td td-gauge">6.5G-SP</div><div role="cell" class="td">0.171"</div><div role="cell" class="td">0.191"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc94}}" style="order: {{ro94}}"><div role="cell" class="td td-gauge">6G-RW</div><div role="cell" class="td">0.173"</div><div role="cell" class="td">0.203"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc95}}" style="order: {{ro95}}"><div role="cell" class="td td-gauge">6G-SP</div><div role="cell" class="td">0.177"</div><div role="cell" class="td">0.197"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc96}}" style="order: {{ro96}}"><div role="cell" class="td td-gauge">6G-TW</div><div role="cell" class="td">0.183"</div><div role="cell" class="td">0.203"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc97}}" style="order: {{ro97}}"><div role="cell" class="td td-gauge">6G-X</div><div role="cell" class="td">0.189"</div><div role="cell" class="td">0.203"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc98}}" style="order: {{ro98}}"><div role="cell" class="td td-gauge">6RW</div><div role="cell" class="td">0.173"</div><div role="cell" class="td">0.203"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc99}}" style="order: {{ro99}}"><div role="cell" class="td td-gauge">7/32" x .005</div><div role="cell" class="td">0.208"</div><div role="cell" class="td">0.219"</div><div role="cell" class="td">0.006"</div></div><div role="row" class="{{rc100}}" style="order: {{ro100}}"><div role="cell" class="td td-gauge">7.5</div><div role="cell" class="td">0.150"</div><div role="cell" class="td">0.172"</div><div role="cell" class="td">0.011"</div></div><div role="row" class="{{rc101}}" style="order: {{ro101}}"><div role="cell" class="td td-gauge">7G-RW</div><div role="cell" class="td">0.150"</div><div role="cell" class="td">0.180"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc102}}" style="order: {{ro102}}"><div role="cell" class="td td-gauge">7G-TW</div><div role="cell" class="td">0.160"</div><div role="cell" class="td">0.180"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc103}}" style="order: {{ro103}}"><div role="cell" class="td td-gauge">7G-XTW</div><div role="cell" class="td">0.166"</div><div role="cell" class="td">0.180"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc104}}" style="order: {{ro104}}"><div role="cell" class="td td-gauge">7G-XX</div><div role="cell" class="td">0.173"</div><div role="cell" class="td">0.180"</div><div role="cell" class="td">0.004"</div></div><div role="row" class="{{rc105}}" style="order: {{ro105}}"><div role="cell" class="td td-gauge">8.5</div><div role="cell" class="td">0.136"</div><div role="cell" class="td">0.156"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc106}}" style="order: {{ro106}}"><div role="cell" class="td td-gauge">8G-RW</div><div role="cell" class="td">0.135"</div><div role="cell" class="td">0.165"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc107}}" style="order: {{ro107}}"><div role="cell" class="td td-gauge">8G-SP</div><div role="cell" class="td">0.150"</div><div role="cell" class="td">0.160"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc108}}" style="order: {{ro108}}"><div role="cell" class="td td-gauge">8G-TW</div><div role="cell" class="td">0.145"</div><div role="cell" class="td">0.165"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc109}}" style="order: {{ro109}}"><div role="cell" class="td td-gauge">8G-UTW</div><div role="cell" class="td">0.160"</div><div role="cell" class="td">0.166"</div><div role="cell" class="td">0.003"</div></div><div role="row" class="{{rc110}}" style="order: {{ro110}}"><div role="cell" class="td td-gauge">8G-XTW</div><div role="cell" class="td">0.151"</div><div role="cell" class="td">0.165"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc111}}" style="order: {{ro111}}"><div role="cell" class="td td-gauge">9/32" x .010</div><div role="cell" class="td">0.261"</div><div role="cell" class="td">0.281"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc112}}" style="order: {{ro112}}"><div role="cell" class="td td-gauge">9.5G</div><div role="cell" class="td">0.119"</div><div role="cell" class="td">0.141"</div><div role="cell" class="td">0.011"</div></div><div role="row" class="{{rc113}}" style="order: {{ro113}}"><div role="cell" class="td td-gauge">9.5G-SP</div><div role="cell" class="td">0.119"</div><div role="cell" class="td">0.139"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc114}}" style="order: {{ro114}}"><div role="cell" class="td td-gauge">9G-RW</div><div role="cell" class="td">0.118"</div><div role="cell" class="td">0.148"</div><div role="cell" class="td">0.015"</div></div><div role="row" class="{{rc115}}" style="order: {{ro115}}"><div role="cell" class="td td-gauge">9G-TW</div><div role="cell" class="td">0.128"</div><div role="cell" class="td">0.148"</div><div role="cell" class="td">0.010"</div></div><div role="row" class="{{rc116}}" style="order: {{ro116}}"><div role="cell" class="td td-gauge">9G-UTW</div><div role="cell" class="td">0.138"</div><div role="cell" class="td">0.148"</div><div role="cell" class="td">0.005"</div></div><div role="row" class="{{rc117}}" style="order: {{ro117}}"><div role="cell" class="td td-gauge">9G-XTW</div><div role="cell" class="td">0.135"</div><div role="cell" class="td">0.148"</div><div role="cell" class="td">0.007"</div></div><div role="row" class="{{rc118}}" style="order: {{ro118}}"><div role="cell" class="td td-gauge">9TW</div><div role="cell" class="td">0.128"</div><div role="cell" class="td">0.148"</div><div role="cell" class="td">0.010"</div></div>
+<sc-if value="{{tubeNone}}" hint-placeholder-val="{{false}}"><p class="st-none">No stocked tube matches that. <a href="contact.html">Ask us about a custom size</a>.</p></sc-if>
+</div>
+</div>
+</div>
+<p class="note st-note">All dimensions in inches. Stock changes often; confirm availability when you request a quote.</p>
+</section>
+<section id="start" class="cta" data-tone="dark" aria-labelledby="start-h">
+<div><h2 id="start-h" class="h2">Whether it’s 1 part or 1,000,000.</h2><p class="lede">Send us your drawing or sub-assembly and our engineers will get back to you within 24 hours.</p></div>
+<a class="sx-btn" href="contact.html">Start a project <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</section>
+</main>
+<footer class="foot">
+<span>Stratos Laser © 2026</span>
+<a href="mailto:info@stratoslaser.com">info@stratoslaser.com</a>
+<a href="contact.html">Contact</a>
+<a href="#">Privacy policy</a>
+</footer>
+</div>
+</template>
+<script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._y = window.scrollY || 0;
+    this._size = () => {
+      // On the canvas an artboard is as tall as the whole page, so a viewport-high panel would fill it: fall back to a laptop screen.
+      const h = window.innerHeight;
+      const secH = h > 1300 ? '900px' : Math.max(h, 620) + 'px';
+      if (secH !== (this.state && this.state.secH)) this.setState({ secH });
+      this._tone();
+    };
+    this._tone = () => {
+      const root = this._root || document;
+      const panels = root.querySelectorAll('[data-tone]');
+      let light = false;
+      panels.forEach((p) => { const r = p.getBoundingClientRect(); if (r.top <= 42 && r.bottom > 42) light = p.getAttribute('data-tone') === 'light'; });
+      if (light !== !!(this.state && this.state.light)) this.setState({ light });
+    };
+    this._scroll = () => {
+      const y = window.scrollY || 0, dy = y - this._y;
+      this._y = y;
+      let hide = this.state && this.state.hide;
+      if (y < 120) hide = false; else if (dy > 6) hide = true; else if (dy < -6) hide = false;
+      if (this.state && this.state.menuOpen) hide = false;
+      if (hide !== (this.state && this.state.hide)) this.setState({ hide, ddOpen: hide ? false : this.state.ddOpen });
+      this._tone();
+    };
+    this._key = (e) => { if (e.key === 'Escape' && this.state && (this.state.menuOpen || this.state.ddOpen)) this.setState({ menuOpen: false, ddOpen: false }); };
+    this._docClick = (e) => { if (this.state && this.state.ddOpen && !(e.target.closest && e.target.closest('.has-dd'))) this.setState({ ddOpen: false }); };
+    window.addEventListener('resize', this._size);
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    document.addEventListener('keydown', this._key);
+    document.addEventListener('click', this._docClick);
+    this._size();
+    if (this._mountX) this._mountX();
+  }
+  componentWillUnmount() {
+    if (this._unmountX) this._unmountX();
+    window.removeEventListener('resize', this._size);
+    window.removeEventListener('scroll', this._scroll);
+    document.removeEventListener('keydown', this._key);
+    document.removeEventListener('click', this._docClick);
+  }
+  
+  _tubeView() {
+    const s = this.state || {};
+    const D = [["1/16 x .012", "0.038", "0.063", "0.012"], ["1/4\" x .010", "0.230", "0.250", "0.010"], ["1/4\" x .020", "0.210", "0.250", "0.020"], ["1/8 x .005", "0.115", "0.125", "0.005"], ["1/8 x .010", "0.105", "0.125", "0.010"], ["10.5g", "0.106", "0.126", "0.010"], ["10g-rw", "0.106", "0.134", "0.014"], ["10g-tw", "0.114", "0.134", "0.010"], ["10g-utw", "0.122", "0.134", "0.006"], ["10g-xtw", "0.118", "0.134", "0.008"], ["11.5g", "0.095", "0.115", "0.010"], ["11g-rw", "0.094", "0.120", "0.013"], ["11g-tw", "0.100", "0.120", "0.010"], ["11g-utw", "0.108", "0.120", "0.006"], ["11g-xtw", "0.104", "0.120", "0.008"], ["11g-xxtw", "0.112", "0.120", "0.004"], ["11hv", "0.090", "0.120", "0.015"], ["11x", "0.106", "0.120", "0.007"], ["12g-h", "0.077", "0.109", "0.016"], ["12g-rw", "0.085", "0.109", "0.012"], ["12g-sp", "0.091", "0.105", "0.007"], ["12g-tw", "0.091", "0.109", "0.009"], ["12g-tw", "0.095", "0.109", "0.007"], ["12g-utw", "0.099", "0.109", "0.005"], ["12g-xtw", "0.097", "0.109", "0.006"], ["12g-xx", "0.100", "0.109", "0.005"], ["13.5g", "0.071", "0.089", "0.009"], ["13.5g-sp", "0.081", "0.087", "0.003"], ["13g-rw", "0.071", "0.095", "0.012"], ["13g-tw", "0.077", "0.095", "0.009"], ["13g-utw", "0.085", "0.095", "0.005"], ["13g-xtw", "0.081", "0.095", "0.007"], ["13g-xxtw", "0.090", "0.095", "0.003"], ["14.5g-sp", "0.071", "0.076", "0.003"], ["14.5g-sp2", "0.068", "0.074", "0.003"], ["14.5g-tw", "0.063", "0.078", "0.008"], ["14g-rw", "0.063", "0.083", "0.010"], ["14g-tw", "0.067", "0.083", "0.008"], ["14g-utw", "0.075", "0.083", "0.004"], ["14g-xtw", "0.072", "0.083", "0.006"], ["14g-xxtw", "0.077", "0.083", "0.003"], ["15g-hw", "0.050", "0.072", "0.011"], ["15g-rw", "0.054", "0.072", "0.009"], ["15g-tw", "0.061", "0.072", "0.006"], ["15g-utw", "0.065", "0.072", "0.004"], ["15g-xtw", "0.063", "0.072", "0.005"], ["16.5g-tw", "0.052", "0.062", "0.005"], ["16g-rw", "0.047", "0.065", "0.009"], ["16g-tw", "0.054", "0.065", "0.006"], ["16g-utw", "0.058", "0.065", "0.004"], ["16g-xtw", "0.056", "0.065", "0.005"], ["16tw", "0.053", "0.065", "0.006"], ["16xx", "0.060", "0.065", "0.003"], ["17.5g", "0.046", "0.056", "0.005"], ["17.5g-tw", "0.052", "0.056", "0.002"], ["17g-hw", "0.039", "0.059", "0.010"], ["17g-rw", "0.043", "0.058", "0.008"], ["17g-tw", "0.048", "0.058", "0.005"], ["17g-utw", "0.052", "0.058", "0.003"], ["17g-xtw", "0.050", "0.058", "0.004"], ["17s", "0.042", "0.058", "0.008"], ["18.5g-rw", "0.033", "0.046", "0.007"], ["18g-rw", "0.033", "0.050", "0.009"], ["18g-tw", "0.038", "0.050", "0.006"], ["18g-utw", "0.045", "0.050", "0.003"], ["18g-xtw", "0.042", "0.050", "0.004"], ["18h", "0.030", "0.050", "0.010"], ["19g-hw", "0.023", "0.043", "0.010"], ["19g-tw", "0.033", "0.042", "0.005"], ["19g-utw", "0.038", "0.043", "0.003"], ["19g-xtw", "0.035", "0.042", "0.004"], ["19g-xxtw", "0.037", "0.042", "0.003"], ["20g-rw", "0.024", "0.036", "0.006"], ["20g-tw", "0.026", "0.036", "0.005"], ["20g-utw", "0.031", "0.036", "0.003"], ["20g-xtw", "0.028", "0.036", "0.004"], ["21g-hw", "0.016", "0.032", "0.008"], ["21g-tw", "0.023", "0.032", "0.005"], ["21g-utw", "0.027", "0.032", "0.003"], ["21g-xtw", "0.026", "0.032", "0.003"], ["21h", "0.017", "0.032", "0.008"], ["22g-utw", "0.024", "0.028", "0.003"], ["23g-utw", "0.021", "0.025", "0.003"], ["3/8\" x .010", "0.355", "0.375", "0.010"], ["3g-rw", "0.219", "0.259", "0.020"], ["3g-tw", "0.229", "0.259", "0.015"], ["3g-xtw", "0.239", "0.259", "0.010"], ["4g-rw", "0.198", "0.238", "0.020"], ["4g-tw", "0.208", "0.238", "0.015"], ["4g-xtw", "0.218", "0.238", "0.010"], ["5.5g", "0.189", "0.211", "0.011"], ["5g-rw", "0.189", "0.219", "0.015"], ["5g-tw", "0.199", "0.219", "0.010"], ["6.5g-sp", "0.171", "0.191", "0.010"], ["6g-rw", "0.173", "0.203", "0.015"], ["6g-sp", "0.177", "0.197", "0.010"], ["6g-tw", "0.183", "0.203", "0.010"], ["6g-x", "0.189", "0.203", "0.007"], ["6rw", "0.173", "0.203", "0.015"], ["7/32\" x .005", "0.208", "0.219", "0.006"], ["7.5", "0.150", "0.172", "0.011"], ["7g-rw", "0.150", "0.180", "0.015"], ["7g-tw", "0.160", "0.180", "0.010"], ["7g-xtw", "0.166", "0.180", "0.007"], ["7g-xx", "0.173", "0.180", "0.004"], ["8.5", "0.136", "0.156", "0.010"], ["8g-rw", "0.135", "0.165", "0.015"], ["8g-sp", "0.150", "0.160", "0.005"], ["8g-tw", "0.145", "0.165", "0.010"], ["8g-utw", "0.160", "0.166", "0.003"], ["8g-xtw", "0.151", "0.165", "0.007"], ["9/32\" x .010", "0.261", "0.281", "0.010"], ["9.5g", "0.119", "0.141", "0.011"], ["9.5g-sp", "0.119", "0.139", "0.010"], ["9g-rw", "0.118", "0.148", "0.015"], ["9g-tw", "0.128", "0.148", "0.010"], ["9g-utw", "0.138", "0.148", "0.005"], ["9g-xtw", "0.135", "0.148", "0.007"], ["9tw", "0.128", "0.148", "0.010"]];
+    const R = {"gauge": [111, 115, 116, 112, 113, 37, 33, 34, 35, 36, 45, 38, 39, 40, 41, 42, 43, 44, 46, 47, 48, 49, 50, 51, 52, 53, 59, 60, 54, 55, 56, 57, 58, 66, 67, 68, 61, 62, 63, 64, 65, 69, 70, 71, 72, 73, 80, 74, 75, 76, 77, 78, 79, 87, 88, 81, 82, 83, 84, 85, 86, 94, 89, 90, 91, 92, 93, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 118, 0, 1, 2, 3, 4, 5, 8, 6, 7, 14, 9, 10, 11, 12, 13, 114, 19, 15, 16, 17, 18, 25, 20, 21, 22, 23, 24, 117, 31, 32, 26, 27, 28, 29, 30], "id": [20, 115, 111, 78, 71, 73, 72, 77, 83, 80, 64, 63, 68, 75, 70, 76, 59, 74, 52, 57, 61, 62, 65, 67, 66, 69, 48, 56, 47, 53, 58, 55, 60, 49, 46, 42, 41, 45, 51, 50, 54, 29, 35, 40, 44, 43, 31, 27, 36, 38, 37, 34, 39, 26, 33, 21, 24, 28, 32, 30, 22, 14, 13, 18, 25, 23, 11, 3, 15, 19, 16, 17, 5, 7, 12, 10, 0, 4, 9, 8, 1, 6, 2, 118, 113, 114, 116, 107, 109, 112, 105, 104, 108, 98, 99, 102, 103, 106, 100, 110, 92, 91, 95, 97, 101, 88, 86, 93, 90, 96, 94, 117, 81, 82, 79, 84, 89, 87, 85], "od": [31, 112, 113, 74, 75, 76, 77, 78, 79, 80, 66, 67, 68, 69, 70, 71, 72, 73, 59, 60, 58, 61, 62, 63, 64, 65, 52, 51, 53, 54, 55, 56, 57, 44, 43, 45, 46, 47, 48, 49, 50, 38, 39, 40, 41, 42, 30, 32, 33, 34, 35, 36, 37, 22, 23, 29, 24, 25, 26, 27, 28, 16, 17, 18, 19, 20, 21, 14, 11, 15, 12, 13, 7, 8, 9, 10, 2, 3, 4, 5, 6, 1, 0, 118, 114, 115, 116, 109, 110, 111, 105, 106, 107, 99, 101, 100, 102, 103, 104, 108, 94, 95, 96, 97, 98, 88, 90, 89, 91, 93, 92, 117, 82, 81, 83, 84, 85, 86, 87], "wall": [103, 94, 118, 39, 93, 86, 105, 85, 40, 59, 88, 104, 87, 41, 60, 18, 114, 54, 115, 101, 55, 67, 56, 28, 42, 29, 69, 3, 102, 68, 30, 57, 2, 5, 6, 62, 89, 61, 19, 43, 4, 100, 70, 44, 20, 31, 33, 71, 45, 21, 32, 46, 7, 35, 0, 90, 63, 34, 8, 22, 64, 58, 72, 47, 9, 23, 91, 92, 36, 10, 24, 11, 48, 37, 12, 25, 65, 38, 13, 14, 66, 15, 16, 96, 116, 106, 73, 117, 107, 74, 97, 108, 75, 78, 109, 76, 77, 50, 110, 49, 98, 111, 79, 51, 17, 81, 112, 26, 80, 1, 52, 95, 99, 84, 113, 82, 27, 53, 83]};
+    const key = s.tubeSort || 'gauge', dir = s.tubeDir || 1;
+    const q = (s.tubeQ || '').trim().toLowerCase().replace(/["\s]+/g, ' ');
+    const terms = q ? q.split(' ').filter(Boolean) : [];
+    let shown = 0;
+    const out = {};
+    for (let i = 0; i < D.length; i++) {
+      const hay = D[i].join(' ') + ' ' + D[i].slice(1).map((v) => v.replace(/^0/, '')).join(' ');
+      const hit = terms.every((t) => hay.indexOf(t) !== -1);
+      if (hit) shown++;
+      out['rc' + i] = hit ? 'tr' : 'tr gone';
+      out['ro' + i] = String(dir > 0 ? R[key][i] : D.length - 1 - R[key][i]);
+    }
+    ['gauge', 'id', 'od', 'wall'].forEach((k) => {
+      const on = k === key;
+      out['as_' + k] = on ? (dir > 0 ? 'ascending' : 'descending') : 'none';
+      out['sc_' + k] = on ? (dir > 0 ? 'sb on asc' : 'sb on desc') : 'sb';
+      out['sort_' + k] = () => this.setState({ tubeSort: k, tubeDir: on ? -dir : 1 });
+    });
+    out.tubeCount = q ? shown + ' of ' + D.length + ' tubes' : D.length + ' tubes in stock';
+    out.tubeNone = shown === 0;
+    out.tubeQ = (e) => this.setState({ tubeQ: e.target.value });
+    return out;
+  }
+
+  _mountX() {
+    const svg = document.querySelector('.tfield');
+    if (!svg) return;
+    const tubes = [...svg.querySelectorAll('.tb')].map((g) => ({
+      c: +g.getAttribute('data-c'), r: +g.getAttribute('data-r'),
+      bk: g.querySelector('.bk'), bd: g.querySelector('.bd'), ln: g.querySelector('.ln'), fr: g.querySelector('.fr'), bo: g.querySelector('.bo'),
+    }));
+    // layout: a 9 x 6 grid, every other row nudged half a step, like stock racked on a shelf
+    const SX = 168, SY = 150, X0 = 92, Y0 = 92, L = 104, R = 23, RI = 17;
+    const PERIOD = 4.4, TURN = 0.55, BASE = 0.38;
+    const ease = (x) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
+    const f = (n) => n.toFixed(2);
+    const draw = (t) => {
+      for (const b of tubes) {
+        const cx = X0 + b.c * SX + (b.r % 2 ? SX / 2 : 0), cy = Y0 + b.r * SY;
+        // each tube waits its turn: the phase runs diagonally across the rack
+        const u = t / PERIOD - (b.c * 0.075 + b.r * 0.11);
+        const k = Math.floor(u), fr = u - k;
+        const th = BASE + Math.PI * (k + ease(Math.min(1, fr / TURN)));
+        const c = Math.cos(th), s = Math.sin(th);
+        const hx = (L / 2) * c, rx = Math.max(0.01, R * Math.abs(s)), ri = Math.max(0.01, RI * Math.abs(s));
+        const front = s >= 0 ? 1 : -1;
+        const fx = cx + front * hx, bx = cx - front * hx;
+        b.bk.setAttribute('cx', f(bx)); b.bk.setAttribute('cy', f(cy)); b.bk.setAttribute('rx', f(rx)); b.bk.setAttribute('ry', R);
+        const x1 = Math.min(fx, bx), x2 = Math.max(fx, bx);
+        b.bd.setAttribute('d', `M${f(x1)} ${f(cy - R)}H${f(x2)}V${f(cy + R)}H${f(x1)}Z`);
+        b.ln.setAttribute('d', `M${f(x1)} ${f(cy - R)}H${f(x2)}M${f(x1)} ${f(cy + R)}H${f(x2)}`);
+        b.fr.setAttribute('cx', f(fx)); b.fr.setAttribute('cy', f(cy)); b.fr.setAttribute('rx', f(rx)); b.fr.setAttribute('ry', R);
+        b.bo.setAttribute('cx', f(fx)); b.bo.setAttribute('cy', f(cy)); b.bo.setAttribute('rx', f(ri)); b.bo.setAttribute('ry', RI);
+      }
+    };
+    const still = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let visible = true;
+    if ('IntersectionObserver' in window) {
+      this._tfIO = new IntersectionObserver((es) => { visible = es[0].isIntersecting; });
+      this._tfIO.observe(svg);
+    }
+    const t0 = performance.now();
+    draw(2.1);
+    if (still) return;
+    const loop = (now) => {
+      if (visible && !document.hidden) draw((now - t0) / 1000 + 2.1);
+      this._tfRaf = requestAnimationFrame(loop);
+    };
+    this._tfRaf = requestAnimationFrame(loop);
+  }
+  _unmountX() {
+    if (this._tfRaf) cancelAnimationFrame(this._tfRaf);
+    if (this._tfIO) this._tfIO.disconnect();
+  }
+
+  renderVals() {
+    const s = this.state || {};
+    let bar = 'bar';
+    if (s.hide) bar += ' hide';
+    if (s.light) bar += ' light';
+    return {
+      secH: s.secH || '900px',
+      barCls: bar,
+      ddCls: s.ddOpen ? 'has-dd dd-open' : 'has-dd',
+      ddExp: s.ddOpen ? 'true' : 'false',
+      menuOpen: !!s.menuOpen,
+      matOn0: (s.mat || 0) === 0, matSel0: (s.mat || 0) === 0 ? 'true' : 'false', matCls0: (s.mat || 0) === 0 ? 'tab on' : 'tab', matGo0: () => this.setState({ mat: 0 }),
+      matOn1: (s.mat || 0) === 1, matSel1: (s.mat || 0) === 1 ? 'true' : 'false', matCls1: (s.mat || 0) === 1 ? 'tab on' : 'tab', matGo1: () => this.setState({ mat: 1 }),
+      matOn2: (s.mat || 0) === 2, matSel2: (s.mat || 0) === 2 ? 'true' : 'false', matCls2: (s.mat || 0) === 2 ? 'tab on' : 'tab', matGo2: () => this.setState({ mat: 2 }),...this._tubeView(),
+      menuExp: s.menuOpen ? 'true' : 'false',
+      toggleDd: (e) => { if (e) e.stopPropagation(); this.setState({ ddOpen: !(this.state && this.state.ddOpen) }); },
+      openMenu: () => this.setState({ menuOpen: true, hide: false }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+DCLite.mount(document.getElementById('page'), Component, {}, document.getElementById('app'));
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Stratos Laser — Precision laser cutting</title>
+<meta name="description" content="Stratos laser cuts hypotubes and micro-components for medical devices: continuous patterns with no feed gaps, from a facility built around the process.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/stratos-logo-white.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+body{margin:0;background:#000}
+a{color:#f0f0fa}a:hover{color:#ffffff}
+::selection{background:#24a8f2;color:#000}
+.b-root{font-family:'D-DIN',Arial,Verdana,sans-serif;color:#f0f0fa;background:#000;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.b-root *{box-sizing:border-box}
+.b-root a:focus-visible,.b-root button:focus-visible{outline:2px solid #24a8f2;outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:12px;z-index:100;background:#f0f0fa;color:#000;padding:12px 16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.skip:focus{left:60px}
+.skip:hover{color:#000}
+
+/* bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;height:84px;display:flex;align-items:center;gap:56px;padding:0 60px;color:#f0f0fa;
+  background:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%);transition:transform .5s cubic-bezier(.16,1,.3,1),color .35s ease,background .35s ease}
+.bar.hide{transform:translateY(-100%)}
+.bar.light{color:#0a0a0b;background:linear-gradient(rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 100%)}
+.home{display:flex;align-items:center;min-height:44px;color:inherit;flex:none}
+.home:hover{color:inherit}
+.logo{display:block;height:19px;width:auto}
+.links{display:flex;align-items:center;gap:30px;margin:0;padding:0;list-style:none}
+.links>li{position:relative}
+.nl{position:relative;display:flex;align-items:center;gap:7px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;color:inherit;text-decoration:none;
+  font:700 13px/1 'D-DIN',Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bar a.nl:hover,.bar button.nl:hover{color:inherit}
+.nl::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.nl:hover::after,.nl:focus-visible::after,.dd-open>.nl::after{transform:scaleX(1)}
+.chev{transition:transform .3s ease}
+.dd-open .chev,.has-dd:hover .chev{transform:rotate(180deg)}
+.dd{position:absolute;top:100%;left:-20px;min-width:230px;margin:0;padding:8px 0;list-style:none;background:#000;border:1px solid rgba(240,240,250,.14);
+  opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1),visibility 0s .35s}
+.has-dd:hover .dd,.has-dd:focus-within .dd,.dd-open .dd{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1)}
+.dd a{display:flex;align-items:center;min-height:44px;padding:0 20px;color:#f0f0fa;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dd a:hover{background:#f0f0fa;color:#000}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer;padding:0}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);border:0;padding:0;cursor:pointer;width:100%}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:61;width:min(400px,100%);background:#000;color:#f0f0fa;padding:20px 40px 40px;overflow-y:auto;animation:dIn .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes dIn{from{transform:translateX(100%)}to{transform:none}}
+.drawer .x{display:flex;margin:0 -10px 24px auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer}
+.drawer ul{list-style:none;margin:0;padding:0}
+.drawer li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid rgba(240,240,250,.14);color:#f0f0fa;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.drawer li.sub a{padding-left:18px;font-size:13px;min-height:46px;color:#c9c9d4}
+.drawer .grp{margin-top:28px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9a9aa6;padding-bottom:8px;border-bottom:1px solid rgba(240,240,250,.14)}
+
+/* panels */
+.panel{position:relative;overflow:hidden;min-height:620px;background:#000}
+.panel .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* the photographs are shot centred; widening them pushes the subject right, clear of the copy */
+.panel .bg-pattern,.panel .bg-proto{width:122%;left:0;right:auto}
+.panel .bg-facility{width:130%;left:0;right:auto}
+.hero .bg{left:auto;right:0;width:auto;aspect-ratio:1/1;max-width:none}
+.shade{position:absolute;inset:0;pointer-events:none}
+.dark .shade{background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.5) 28%,rgba(0,0,0,0) 56%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%)}
+.light{background:#f5f7fb;color:#0a0a0b}
+.light .shade{background:linear-gradient(90deg,rgba(245,247,251,.92) 0%,rgba(245,247,251,.75) 28%,rgba(245,247,251,0) 52%)}
+.copy{position:absolute;left:60px;top:50%;transform:translateY(-50%);max-width:620px;z-index:2}
+.hero .copy{top:auto;bottom:clamp(96px,14vh,150px);transform:none;max-width:780px}
+.head{margin:0;font-weight:700;text-transform:uppercase;font-size:48px;line-height:1.04;letter-spacing:.02em;text-wrap:balance}
+.hero .head{font-size:60px;line-height:.98;letter-spacing:.01em}
+.blurb{margin:18px 0 0;max-width:440px;font-size:17px;line-height:1.5;letter-spacing:.01em;color:rgba(240,240,250,.86)}
+.light .blurb{color:#2b2b31}
+.sx-btn{display:inline-flex;align-items:center;gap:14px;height:50px;margin-top:30px;padding:0 22px;border:1px solid rgba(240,240,250,.35);color:#f0f0fa;text-decoration:none;
+  font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:background .35s cubic-bezier(.16,1,.3,1),color .35s,border-color .35s}
+.sx-btn .arr{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.sx-btn:hover{background:#f0f0fa;border-color:#f0f0fa;color:#000}
+.sx-btn:hover .arr{transform:translateX(4px)}
+.light .sx-btn{border-color:rgba(10,10,11,.4);color:#0a0a0b}
+.light .sx-btn:hover{background:#0a0a0b;border-color:#0a0a0b;color:#f5f7fb}
+
+/* the one entrance: the first frame settles into place */
+.hero .bg{animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.hero .copy{animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .35s both}
+@keyframes heroImg{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:none}}
+@keyframes heroCopy{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* footer */
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px;min-height:96px;padding:28px 60px;background:#000;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#c9c9d4}
+.foot a{color:#f0f0fa;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+
+@media (max-width: 1240px){
+.links{display:none}
+.menu-btn{display:flex}
+.bar{gap:24px}
+}
+@media (max-width: 760px){
+.bar{height:68px;padding:0 24px}
+.copy,.hero .copy{left:24px;right:24px;top:auto;bottom:72px;transform:none;max-width:none}
+.head{font-size:34px;line-height:1.05}
+.hero .head{font-size:40px}
+.blurb{font-size:16px;margin-top:14px}
+.sx-btn{margin-top:24px}
+.hero .bg{left:0;right:0;top:12%;width:100%;height:auto}
+.panel .bg-pattern,.panel .bg-proto,.panel .bg-facility{width:100%;left:0}
+.bg-pattern{object-position:58% 50%}
+.bg-proto{object-position:72% 50%}
+.panel .bg-facility{height:76%;object-position:50% 40%}
+.dark .shade{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 32%,rgba(0,0,0,0) 62%)}
+.light .shade{background:linear-gradient(0deg,rgba(245,247,251,.96) 0%,rgba(245,247,251,.88) 40%,rgba(245,247,251,0) 64%)}
+.drawer{padding:16px 24px 32px}
+.foot{padding:28px 24px;gap:4px 28px}
+}
+@media (prefers-reduced-motion: reduce){
+.hero .bg,.hero .copy,.drawer{animation:none}
+.bar,.nl::after,.sx-btn,.sx-btn .arr,.dd{transition:none}
+}
+</style>
+<script src="js/dc-lite.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<template id="page">
+<div class="b-root">
+<a href="#main" class="skip">Skip to content</a>
+<header class="{{barCls}}">
+<a class="home" href="index.html" aria-label="Stratos home"><svg class="logo" viewBox="0 0 895.28 117.54" aria-hidden="true" style="fill: currentColor"><path d="M892.95,117.54c2.88.14,3.21-4.14.33-4.44-146.52-14.88-295.19-22.52-445.64-22.52S148.52,98.22,2,113.1c-2.87.29-2.55,4.58.33,4.44,147.53-7.19,295.99-10.83,445.31-10.83s297.78,3.64,445.31,10.83Z" style="fill: #24a8f2"></path><g><path d="M828.25,58.31c-3.82,3.73-9.27,5.81-14.74,5.82l-83.64.18.04-11.55,78.47-.07c4.91,0,7.99-2.81,8-7.3.01-3.94-2.83-7.42-7.5-7.41l-47.14.11c-6.72.02-13.22.03-19.53-1.38-8.39-1.87-13.43-8.46-13.29-16.98.09-5.29.69-10.79,4.82-14.54,3.51-3.18,8.63-4.84,13.78-4.86l80.75-.33c.21,4.17.39,7.79-.04,11.84l-75.72-.08c-4.21,0-7.1,2.44-7.37,5.99s1.86,7.76,6.38,7.78l53.7.19c5.78.02,11.17.55,16.43,2.39,7.4,2.59,11.29,9.18,10.9,17-.23,4.65-.52,9.51-4.3,13.2Z"></path> <path d="M158.13,60.44c-4.3,2.61-9.24,3.8-14.3,3.8l-79.9-.02-.59-11.6,78.08.05c4.79,0,7.79-3.29,7.75-7.17-.05-4.11-2.88-7.4-7.49-7.42l-56.51-.24c-6.3-.03-13.18-1.4-17.61-6.01-6.41-6.66-6.36-18.5-.57-25.58,3.29-4.02,9.13-5.88,14.43-5.9L160.24,0l.04,11.99-73.77-.15c-4.46,0-7.03,3.02-7.11,6.71-.1,4.22,2.81,7.09,7.53,7.1l51.39.04c4.91,0,9.53.56,14.08,1.59,8.61,1.96,12.94,9.17,12.67,17.85-.18,5.89-1.29,11.87-6.94,15.3Z"></path> <path d="M387.22,64.04c-6.75-.12-14.73,1.3-21.48-.2-9.79-6.17-18.15-13.82-27.17-21.16l-39.96-.21-.4,21.71-16.82.08.03-64.18,81.03.16c6.25.01,11.89,1.92,16.65,5.3,8.62,7.27,7.8,26.31-1.6,33.03-5.14,3.67-11.27,3.67-18.01,4.18l27.74,21.3ZM368.16,21.65c.03-5.33-3-9.74-8.59-9.76l-61.21-.24-.05,19.68,62.33-.3c5.22-.03,7.49-4.85,7.51-9.38Z"></path> <path d="M714.96,45.35c-.88,11.9-9.04,17.32-20.22,19.02l-68.8-.06c-12.01-1.9-20.02-7.01-20.73-19.99-.58-10.56-1.93-29.87,5.11-37.43,4.14-4.45,10.42-6.73,16.8-6.73l63.26.03c12.25,0,22.74,4.55,24.66,17.76.24,9.16.6,18.2-.08,27.4ZM688.37,52.57c6.02,0,9.61-4.67,9.64-9.81l.14-19.87c.05-6.76-4.56-11.12-11.44-11.11h-54.5c-6.01.02-9.88,4.48-9.89,9.99l-.05,20.65c-.02,5.87,4.25,10.23,10.38,10.22l55.72-.08Z"></path> <path d="M482.24,48.61l-60.21-.13-11.36,15.71-20.34-.07,30.76-40.5,13.14-17.8c1.85-2.51,4.21-5.4,7.54-5.43l18.25-.17c2.27-.02,5.11.63,6.69,2.68l47.07,61.16-20,.14-11.53-15.59ZM473.86,37.75l-17.64-23.7c-1.48-1.36-2.79-2.57-4.61-2.49-1.61.07-3.35.96-4.53,2.57l-17.55,23.86,44.34-.24Z"></path> <path d="M229.58,64.06l-17.19.53.07-52.56-40.55.15.19-12.04,97.12.05c.06,4.33.4,8.13-.11,11.82l-39.43.09-.1,51.96Z"></path> <path d="M556.41,64.23l-16.94-.07.06-52.18-40.42-.05c-.24-4.31-.21-7.8.04-11.84l97.53-.03c.46,4.13.33,7.7.1,11.91l-40.05.09-.33,52.17Z"></path></g></svg></a>
+<nav aria-label="Main">
+<ul class="links">
+<li><a class="nl" href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a class="nl" href="flat-sheet-cutting.html">Flat Sheet Cutting</a></li><li><a class="nl" href="laser-welding.html">Laser Welding</a></li><li><a class="nl" href="centerless-grinding.html">Centerless Grinding</a></li><li><a class="nl" href="stocked-tubing.html">Stocked Tubing</a></li>
+<li class="{{ddCls}}"><button type="button" class="nl" aria-expanded="{{ddExp}}" aria-controls="company-menu" onClick="{{toggleDd}}">Company <svg class="chev" aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" style="fill: none; stroke: currentColor; stroke-width: 1.5"><path d="M2 3.5L5 6.5L8 3.5"></path></svg></button>
+<ul id="company-menu" class="dd"><li><a href="company.html#why-stratos">Why Stratos</a></li><li><a href="company.html#mission">Mission Statement</a></li><li><a href="company.html#core-values">Core Values</a></li><li><a href="content.html">Content</a></li></ul></li>
+<li><a class="nl" href="contact.html">Contact</a></li>
+</ul>
+</nav>
+<button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="{{menuExp}}" aria-controls="drawer" onClick="{{openMenu}}"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M3 7H21M3 12H21M3 17H21"></path></svg></button>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="scrim" aria-label="Close menu" onClick="{{closeMenu}}"></button>
+<nav id="drawer" class="drawer" aria-label="Menu">
+<button type="button" class="x" aria-label="Close menu" onClick="{{closeMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M4 4L18 18M18 4L4 18"></path></svg></button>
+<ul><li><a href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a href="flat-sheet-cutting.html">Flat Sheet Cutting</a></li><li><a href="laser-welding.html">Laser Welding</a></li><li><a href="centerless-grinding.html">Centerless Grinding</a></li><li><a href="stocked-tubing.html">Stocked Tubing</a></li></ul>
+<div class="grp">Company</div>
+<ul><li class="sub"><a href="company.html#why-stratos">Why Stratos</a></li><li class="sub"><a href="company.html#mission">Mission Statement</a></li><li class="sub"><a href="company.html#core-values">Core Values</a></li><li class="sub"><a href="content.html">Content</a></li><li><a href="contact.html">Contact</a></li></ul>
+</nav>
+</sc-if>
+<main id="main">
+<section id="precision" class="panel hero" data-tone="dark" aria-labelledby="precision-h" style="height: {{secH}}">
+<img class="bg bg-hero" src="assets/b/b-hero.webp" alt="A laser-cut hypotube curving through soft light against black" loading="eager" fetchpriority="high" decoding="async">
+<div class="shade" aria-hidden="true"></div>
+<div class="copy">
+<h1 id="precision-h" class="head">The next generation of precision laser cutting.</h1>
+<p class="blurb">A new standard in laser-cut hypotube manufacturing for the medical device industry.</p>
+<a class="sx-btn" href="laser-cut-hypotubes.html">Laser cut hypotubes <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+<section id="no-feed-gap" class="panel light" data-tone="light" aria-labelledby="no-feed-gap-h" style="height: {{secH}}">
+<img class="bg bg-pattern" src="assets/b/b-pattern.webp" alt="A continuous laser-cut pattern running the length of a hypotube, seen through a magnifier" loading="lazy" decoding="async">
+<div class="shade" aria-hidden="true"></div>
+<div class="copy">
+<h2 id="no-feed-gap-h" class="head">Continuous pattern.<br>No feed gap.</h2>
+<p class="blurb">Conventional machines stop to re-grip the tube, leaving a gap in the pattern. Ours cut the full length as one seamless pattern.</p>
+<a class="sx-btn" href="laser-cut-hypotubes.html#no-feed-gap">See how <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+<section id="facility" class="panel light" data-tone="light" aria-labelledby="facility-h" style="height: {{secH}}">
+<img class="bg bg-facility" src="assets/b/b-facility.webp" alt="A single laser-cut hypotube standing upright on a white surface" loading="lazy" decoding="async">
+<div class="shade" aria-hidden="true"></div>
+<div class="copy">
+<h2 id="facility-h" class="head">Purpose-built facility around our process.</h2>
+<p class="blurb">Every machine, fixture and step is laid out for hypotube work, with in-process measurement and certifications delivered with every lot.</p>
+<a class="sx-btn" href="company.html#why-stratos">Why Stratos <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+<section id="prototype" class="panel light" data-tone="light" aria-labelledby="prototype-h" style="height: {{secH}}">
+<img class="bg bg-proto" src="assets/b/b-prototype.webp" alt="A laser-cut marker band held on two wires, seen through a magnifier" loading="lazy" decoding="async">
+<div class="shade" aria-hidden="true"></div>
+<div class="copy">
+<h2 id="prototype-h" class="head">Your design.<br>Prototyped in hours.</h2>
+<p class="blurb">Send us a drawing and our engineers respond within 24 hours, on the same equipment that takes you from first article to production.</p>
+<a class="sx-btn" href="contact.html">Start a project <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+</main>
+<footer class="foot">
+<span>Stratos Laser © 2026</span>
+<a href="mailto:info@stratoslaser.com">info@stratoslaser.com</a>
+<a href="contact.html">Contact</a>
+<a href="#">Privacy policy</a>
+</footer>
+</div>
+</template>
+<script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._y = window.scrollY || 0;
+    this._size = () => {
+      // On the canvas an artboard is as tall as the whole page, so a viewport-high panel would fill it: fall back to a laptop screen.
+      const h = window.innerHeight;
+      const secH = h > 1300 ? '900px' : Math.max(h, 620) + 'px';
+      if (secH !== (this.state && this.state.secH)) this.setState({ secH });
+      this._tone();
+    };
+    this._tone = () => {
+      const root = this._root || document;
+      const panels = root.querySelectorAll('[data-tone]');
+      let light = false;
+      panels.forEach((p) => { const r = p.getBoundingClientRect(); if (r.top <= 42 && r.bottom > 42) light = p.getAttribute('data-tone') === 'light'; });
+      if (light !== !!(this.state && this.state.light)) this.setState({ light });
+    };
+    this._scroll = () => {
+      const y = window.scrollY || 0, dy = y - this._y;
+      this._y = y;
+      let hide = this.state && this.state.hide;
+      if (y < 120) hide = false; else if (dy > 6) hide = true; else if (dy < -6) hide = false;
+      if (this.state && this.state.menuOpen) hide = false;
+      if (hide !== (this.state && this.state.hide)) this.setState({ hide, ddOpen: hide ? false : this.state.ddOpen });
+      this._tone();
+    };
+    this._key = (e) => { if (e.key === 'Escape' && this.state && (this.state.menuOpen || this.state.ddOpen)) this.setState({ menuOpen: false, ddOpen: false }); };
+    this._docClick = (e) => { if (this.state && this.state.ddOpen && !(e.target.closest && e.target.closest('.has-dd'))) this.setState({ ddOpen: false }); };
+    window.addEventListener('resize', this._size);
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    document.addEventListener('keydown', this._key);
+    document.addEventListener('click', this._docClick);
+    this._size();
+    if (this._mountX) this._mountX();
+  }
+  componentWillUnmount() {
+    if (this._unmountX) this._unmountX();
+    window.removeEventListener('resize', this._size);
+    window.removeEventListener('scroll', this._scroll);
+    document.removeEventListener('keydown', this._key);
+    document.removeEventListener('click', this._docClick);
+  }
+  
+  renderVals() {
+    const s = this.state || {};
+    let bar = 'bar';
+    if (s.hide) bar += ' hide';
+    if (s.light) bar += ' light';
+    return {
+      secH: s.secH || '900px',
+      barCls: bar,
+      ddCls: s.ddOpen ? 'has-dd dd-open' : 'has-dd',
+      ddExp: s.ddOpen ? 'true' : 'false',
+      menuOpen: !!s.menuOpen,
+      
+      menuExp: s.menuOpen ? 'true' : 'false',
+      toggleDd: (e) => { if (e) e.stopPropagation(); this.setState({ ddOpen: !(this.state && this.state.ddOpen) }); },
+      openMenu: () => this.setState({ menuOpen: true, hide: false }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+DCLite.mount(document.getElementById('page'), Component, {}, document.getElementById('app'));
+</script>
+</body>
+</html>

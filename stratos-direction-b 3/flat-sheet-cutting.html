@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Flat Sheet Cutting — Stratos Laser</title>
+<meta name="description" content="High-accuracy laser cutting for intricate micro-components from thin, medical-grade sheet.">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="icon" href="assets/stratos-logo-white.svg" type="image/svg+xml">
+<style>
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'D-DIN';src:url('assets/fonts/D-DIN-PRO-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap}
+body{margin:0;background:#000}
+a{color:#f0f0fa}a:hover{color:#ffffff}
+::selection{background:#24a8f2;color:#000}
+.b-root{font-family:'D-DIN',Arial,Verdana,sans-serif;color:#f0f0fa;background:#000;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+.b-root *{box-sizing:border-box}
+.b-root a:focus-visible,.b-root button:focus-visible{outline:2px solid #24a8f2;outline-offset:3px}
+.skip{position:absolute;left:-9999px;top:12px;z-index:100;background:#f0f0fa;color:#000;padding:12px 16px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;font-size:13px}
+.skip:focus{left:60px}
+.skip:hover{color:#000}
+
+/* bar */
+.bar{position:fixed;top:0;left:0;right:0;z-index:50;height:84px;display:flex;align-items:center;gap:56px;padding:0 60px;color:#f0f0fa;
+  background:linear-gradient(rgba(0,0,0,.6) 0%,rgba(0,0,0,0) 100%);transition:transform .5s cubic-bezier(.16,1,.3,1),color .35s ease,background .35s ease}
+.bar.hide{transform:translateY(-100%)}
+.bar.light{color:#0a0a0b;background:linear-gradient(rgba(255,255,255,.7) 0%,rgba(255,255,255,0) 100%)}
+.home{display:flex;align-items:center;min-height:44px;color:inherit;flex:none}
+.home:hover{color:inherit}
+.logo{display:block;height:19px;width:auto}
+.links{display:flex;align-items:center;gap:30px;margin:0;padding:0;list-style:none}
+.links>li{position:relative}
+.nl{position:relative;display:flex;align-items:center;gap:7px;min-height:44px;padding:0;border:0;background:none;cursor:pointer;color:inherit;text-decoration:none;
+  font:700 13px/1 'D-DIN',Arial,sans-serif;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.bar a.nl:hover,.bar button.nl:hover{color:inherit}
+.nl::after{content:"";position:absolute;left:0;right:0;bottom:9px;height:2px;background:currentColor;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.nl:hover::after,.nl:focus-visible::after,.dd-open>.nl::after{transform:scaleX(1)}
+.chev{transition:transform .3s ease}
+.dd-open .chev,.has-dd:hover .chev{transform:rotate(180deg)}
+.dd{position:absolute;top:100%;left:-20px;min-width:230px;margin:0;padding:8px 0;list-style:none;background:#000;border:1px solid rgba(240,240,250,.14);
+  opacity:0;visibility:hidden;transform:translateY(-6px);transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1),visibility 0s .35s}
+.has-dd:hover .dd,.has-dd:focus-within .dd,.dd-open .dd{opacity:1;visibility:visible;transform:none;transition:opacity .25s ease,transform .35s cubic-bezier(.16,1,.3,1)}
+.dd a{display:flex;align-items:center;min-height:44px;padding:0 20px;color:#f0f0fa;text-decoration:none;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.dd a:hover{background:#f0f0fa;color:#000}
+.menu-btn{display:none;margin-left:auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer;padding:0}
+
+/* drawer */
+.scrim{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.55);border:0;padding:0;cursor:pointer;width:100%}
+.drawer{position:fixed;top:0;right:0;bottom:0;z-index:61;width:min(400px,100%);background:#000;color:#f0f0fa;padding:20px 40px 40px;overflow-y:auto;animation:dIn .45s cubic-bezier(.16,1,.3,1) both}
+@keyframes dIn{from{transform:translateX(100%)}to{transform:none}}
+.drawer .x{display:flex;margin:0 -10px 24px auto;width:44px;height:44px;align-items:center;justify-content:center;border:0;background:none;color:inherit;cursor:pointer}
+.drawer ul{list-style:none;margin:0;padding:0}
+.drawer li a{display:flex;align-items:center;min-height:52px;border-bottom:1px solid rgba(240,240,250,.14);color:#f0f0fa;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:.06em;text-transform:uppercase}
+.drawer li.sub a{padding-left:18px;font-size:13px;min-height:46px;color:#c9c9d4}
+.drawer .grp{margin-top:28px;font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9a9aa6;padding-bottom:8px;border-bottom:1px solid rgba(240,240,250,.14)}
+
+/* panels */
+.panel{position:relative;overflow:hidden;min-height:620px;background:#000}
+.panel .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+/* the photographs are shot centred; widening them pushes the subject right, clear of the copy */
+.panel .bg-pattern,.panel .bg-proto{width:122%;left:0;right:auto}
+.panel .bg-facility{width:130%;left:0;right:auto}
+.hero .bg{left:auto;right:0;width:auto;aspect-ratio:1/1;max-width:none}
+.shade{position:absolute;inset:0;pointer-events:none}
+.dark .shade{background:linear-gradient(90deg,rgba(0,0,0,.78) 0%,rgba(0,0,0,.5) 28%,rgba(0,0,0,0) 56%),linear-gradient(0deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,0) 30%)}
+.light{background:#f5f7fb;color:#0a0a0b}
+.light .shade{background:linear-gradient(90deg,rgba(245,247,251,.92) 0%,rgba(245,247,251,.75) 28%,rgba(245,247,251,0) 52%)}
+.copy{position:absolute;left:60px;top:50%;transform:translateY(-50%);max-width:620px;z-index:2}
+.hero .copy{top:auto;bottom:clamp(96px,14vh,150px);transform:none;max-width:780px}
+.head{margin:0;font-weight:700;text-transform:uppercase;font-size:48px;line-height:1.04;letter-spacing:.02em;text-wrap:balance}
+.hero .head{font-size:60px;line-height:.98;letter-spacing:.01em}
+.blurb{margin:18px 0 0;max-width:440px;font-size:17px;line-height:1.5;letter-spacing:.01em;color:rgba(240,240,250,.86)}
+.light .blurb{color:#2b2b31}
+.sx-btn{display:inline-flex;align-items:center;gap:14px;height:50px;margin-top:30px;padding:0 22px;border:1px solid rgba(240,240,250,.35);color:#f0f0fa;text-decoration:none;
+  font-size:14px;letter-spacing:.08em;text-transform:uppercase;transition:background .35s cubic-bezier(.16,1,.3,1),color .35s,border-color .35s}
+.sx-btn .arr{transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.sx-btn:hover{background:#f0f0fa;border-color:#f0f0fa;color:#000}
+.sx-btn:hover .arr{transform:translateX(4px)}
+.light .sx-btn{border-color:rgba(10,10,11,.4);color:#0a0a0b}
+.light .sx-btn:hover{background:#0a0a0b;border-color:#0a0a0b;color:#f5f7fb}
+
+/* the one entrance: the first frame settles into place */
+.hero .bg{animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.hero .copy{animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .35s both}
+@keyframes heroImg{from{opacity:0;transform:scale(1.07)}to{opacity:1;transform:none}}
+@keyframes heroCopy{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+
+/* footer */
+.foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 40px;min-height:96px;padding:28px 60px;background:#000;
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#c9c9d4}
+.foot a{color:#f0f0fa;text-decoration:none;display:inline-flex;align-items:center;min-height:44px}
+.foot a:hover{text-decoration:underline;text-underline-offset:4px}
+
+@media (max-width: 1240px){
+.links{display:none}
+.menu-btn{display:flex}
+.bar{gap:24px}
+}
+@media (max-width: 760px){
+.bar{height:68px;padding:0 24px}
+.copy,.hero .copy{left:24px;right:24px;top:auto;bottom:72px;transform:none;max-width:none}
+.head{font-size:34px;line-height:1.05}
+.hero .head{font-size:40px}
+.blurb{font-size:16px;margin-top:14px}
+.sx-btn{margin-top:24px}
+.hero .bg{left:0;right:0;top:12%;width:100%;height:auto}
+.panel .bg-pattern,.panel .bg-proto,.panel .bg-facility{width:100%;left:0}
+.bg-pattern{object-position:58% 50%}
+.bg-proto{object-position:72% 50%}
+.panel .bg-facility{height:76%;object-position:50% 40%}
+.dark .shade{background:linear-gradient(0deg,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 32%,rgba(0,0,0,0) 62%)}
+.light .shade{background:linear-gradient(0deg,rgba(245,247,251,.96) 0%,rgba(245,247,251,.88) 40%,rgba(245,247,251,0) 64%)}
+.drawer{padding:16px 24px 32px}
+.foot{padding:28px 24px;gap:4px 28px}
+}
+@media (prefers-reduced-motion: reduce){
+.hero .bg,.hero .copy,.drawer{animation:none}
+.bar,.nl::after,.sx-btn,.sx-btn .arr,.dd{transition:none}
+}
+
+/* ---- sub-page blocks ---- */
+.nl[aria-current="page"]::after,.is-cur>.nl::after{transform:scaleX(1)}
+.pg-hero .copy{top:auto;bottom:clamp(96px,13vh,150px);transform:none;max-width:860px}
+.pg-hero .head{font-size:100px;line-height:.92;letter-spacing:0}
+.pg-hero .blurb{max-width:520px;font-size:18px;margin-top:22px}
+.pg-hero .bg{animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.pg-hero .copy{animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .35s both}
+.bg-lcht{object-position:70% 50%}
+.panel .bg-flat,.panel .bg-weld{width:122%;left:0;right:auto}
+.short{height:auto !important;min-height:0;padding:200px 60px 110px}
+.short .copy{position:static;transform:none;max-width:880px;animation:heroCopy 1.4s cubic-bezier(.16,1,.3,1) .2s both}
+
+.blk{position:relative;background:#000;color:#f0f0fa;padding:140px 60px}
+.blk+.blk{padding-top:40px}
+.rule-top{border-top:1px solid rgba(240,240,250,.16)}
+.h2{margin:0;font-weight:700;text-transform:uppercase;font-size:48px;line-height:1.04;letter-spacing:.02em;max-width:900px;text-wrap:balance}
+.lede{margin:20px 0 0;max-width:560px;font-size:17px;line-height:1.6;color:#c9c9d4}
+
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:40px;margin:0;padding:0;list-style:none}
+.stats li{display:flex;flex-direction:column;gap:12px}
+.num{font-size:104px;line-height:1;letter-spacing:-.01em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.num small{font-size:28px;letter-spacing:.06em;margin-left:10px;text-transform:uppercase}
+.num small.pre{margin:0 10px 0 0}
+.lab{font-size:18px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.stats+.lede{margin-top:88px}
+
+.spec{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:center;gap:60px;background:#000;color:#f0f0fa;padding:120px 60px}
+.spec.flip{grid-template-columns:minmax(0,7fr) minmax(0,5fr)}
+.spec.flip .sc{order:2}
+.sc{max-width:540px}
+.kick{margin:0 0 6px;font-size:20px;letter-spacing:.06em;text-transform:uppercase;color:#c9c9d4}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 30px;margin:28px 0 4px;padding:0;list-style:none}
+.tab{position:relative;min-height:44px;padding:0;border:0;background:none;color:#9a9aa6;cursor:pointer;font:400 15px/1 'D-DIN',Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;transition:color .25s}
+.tab:hover{color:#f0f0fa}
+.tab::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:2px;background:#f0f0fa;transform:scaleX(0);transform-origin:left;transition:transform .45s cubic-bezier(.16,1,.3,1)}
+.tab.on{color:#f0f0fa}.tab.on::after{transform:scaleX(1)}
+.sc p{margin:20px 0 0;font-size:16px;line-height:1.65;color:#c9c9d4}
+.tbl{width:100%;margin-top:34px;border-collapse:collapse;font-size:16px}
+.tbl th,.tbl td{padding:18px 0;border-bottom:1px solid rgba(240,240,250,.22);vertical-align:top}
+.tbl tr:first-child th,.tbl tr:first-child td{border-top:1px solid rgba(240,240,250,.22)}
+.tbl th{text-align:left;font-weight:400;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4;padding-right:24px}
+.tbl td{text-align:right;font-variant-numeric:tabular-nums}
+.tbl.one td{text-align:left}
+.fig{display:flex;align-items:center;justify-content:center;min-height:520px}
+.fig img{display:block;width:100%;max-width:820px;height:auto}
+.fig>img{filter:brightness(1.5) contrast(1.1)}
+.fig [data-hairline]{max-width:820px;--hl-plate:#000 !important;--hl-edge:#ededf6 !important;--hl-mid:#a4a4b0 !important;--hl-lo:#5a5a64 !important}
+.fig>svg{width:min(100%,560px)}
+.fig svg{display:block;height:auto}
+.pairs{display:grid;gap:24px;width:100%;max-width:720px}
+.pairs figure{margin:0}
+.pairs figcaption{display:flex;justify-content:space-between;gap:16px;margin-top:10px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.pairs figcaption b{font-weight:700;color:#f0f0fa}
+.note{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:#9a9aa6;margin-top:6px}
+.grades{display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.grades span{font-size:120px;line-height:1;letter-spacing:-.01em}
+.grades em{font-style:normal;font-size:16px;letter-spacing:.08em;text-transform:uppercase;color:#9a9aa6;margin-top:18px}
+
+.spec.three{grid-template-columns:minmax(0,1fr) minmax(0,1fr) minmax(0,.9fr);gap:48px;align-items:center}
+.surf{margin:0}
+.surf img{display:block;width:100%;height:auto}
+.surf figcaption{margin-top:14px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.surf figcaption b{font-weight:700;color:#f0f0fa}
+.surf figcaption span{display:block;margin-top:6px;text-transform:none;letter-spacing:.01em;font-size:15px;line-height:1.5}
+.spec.three .sc .note{margin-top:22px;font-size:12px;line-height:1.5;letter-spacing:.1em;color:#9a9aa6}
+.nw{white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:56px 40px;margin:64px 0 0;padding:0;list-style:none}
+.tiles li{border-top:1px solid rgba(240,240,250,.22);padding-top:24px}
+.tiles h3{margin:0;font-size:20px;line-height:1.2;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.tiles p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#c9c9d4;max-width:400px}
+
+.statement{margin:0;max-width:1080px;font-size:44px;line-height:1.22;font-weight:400;letter-spacing:0}
+.statement+.lede{margin-top:36px;max-width:640px;font-size:18px}
+
+.posts{margin:56px 0 0;padding:0;list-style:none;border-top:1px solid rgba(240,240,250,.22)}
+.posts li{display:grid;grid-template-columns:200px minmax(0,1fr) 160px;gap:40px;padding:34px 0;border-bottom:1px solid rgba(240,240,250,.22)}
+.posts .cat,.posts .when{font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4;padding-top:6px}
+.posts .when{text-align:right;color:#9a9aa6}
+.posts h3{margin:0;font-size:26px;line-height:1.15;font-weight:700;text-transform:uppercase;letter-spacing:.02em;max-width:760px}
+.posts p{margin:12px 0 0;font-size:16px;line-height:1.6;color:#c9c9d4;max-width:680px}
+.posts .feat h3{font-size:40px}
+
+.cta{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 60px;background:#000;color:#f0f0fa;padding:120px 60px;border-top:1px solid rgba(240,240,250,.16)}
+.cta .sx-btn{margin-top:0}
+
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:760px}
+.form .wide{grid-column:1 / -1}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.field input,.field select,.field textarea{width:100%;min-height:56px;padding:16px 18px;border:1px solid rgba(240,240,250,.3);border-radius:0;background:#000;color:#f0f0fa;font:400 16px/1.4 'D-DIN',Arial,sans-serif;letter-spacing:.02em;transition:border-color .25s}
+.field textarea{min-height:150px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#9a9aa6;opacity:1}
+.field select{appearance:none;-webkit-appearance:none;cursor:pointer}
+.field select:has(option[value=""]:checked){color:#9a9aa6}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#f0f0fa}
+.form .sx-btn{background:none;cursor:pointer;font-family:inherit}
+.c-head{font-size:72px;line-height:.95}
+.hint{margin:4px 0 0;font-size:14px;line-height:1.5;color:#9a9aa6}
+.sent{margin:0;font-size:16px;line-height:1.6;color:#f0f0fa}
+.split{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:60px;align-items:start}
+.direct{margin-top:40px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.direct a{display:inline-flex;min-height:44px;align-items:center;margin-top:6px;font-size:20px;letter-spacing:.02em;text-transform:none;color:#f0f0fa}
+
+@media (max-width: 1100px){
+.spec,.spec.flip,.split{grid-template-columns:1fr}
+.spec.flip .sc{order:0}
+.spec.three{grid-template-columns:1fr 1fr}
+.spec.three .sc{grid-column:1 / -1;order:-1}
+.fig{min-height:0}
+.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+.num{font-size:80px}
+}
+@media (max-width: 760px){
+.pg-hero .head{font-size:52px}
+.pg-hero .blurb{font-size:16px}
+.short{padding:140px 24px 72px}
+.blk,.spec,.cta{padding:88px 24px}
+.blk+.blk{padding-top:24px}
+.h2{font-size:34px}
+.stats,.tiles{grid-template-columns:1fr;gap:36px}
+.spec.three{grid-template-columns:1fr}
+.num{font-size:72px}
+.stats+.lede{margin-top:56px}
+.grades span{font-size:72px}
+.statement{font-size:28px}
+.posts li{grid-template-columns:1fr;gap:10px}
+.posts .when{text-align:left;padding-top:0}
+.posts .feat h3,.posts h3{font-size:24px}
+.form{grid-template-columns:1fr}
+.c-head{font-size:44px}
+}
+@media (prefers-reduced-motion: reduce){
+.pg-hero .bg,.pg-hero .copy,.short .copy{animation:none}
+.tab::after{transition:none}
+}
+
+.st-top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:32px 60px}
+.st-top .lede a,.st-none a{color:#f0f0fa;text-underline-offset:4px}
+.st-search{position:relative;display:flex;align-items:center;gap:12px;width:min(100%,460px);border-bottom:1px solid rgba(240,240,250,.4);color:#c9c9d4;transition:border-color .25s}
+.st-search:focus-within{border-color:#f0f0fa}
+.st-search input{flex:1;min-width:0;min-height:56px;border:0;background:none;color:#f0f0fa;font:400 17px/1.3 'D-DIN',Arial,sans-serif;letter-spacing:.02em;outline:none}
+.st-search input::placeholder{color:#9a9aa6;opacity:1}
+.st-count{margin:48px 0 14px;font-size:14px;letter-spacing:.08em;text-transform:uppercase;color:#c9c9d4}
+.st-wrap{max-height:640px;overflow-y:auto;border-top:1px solid rgba(240,240,250,.22);border-bottom:1px solid rgba(240,240,250,.22);overscroll-behavior:contain;scrollbar-color:#3a3a42 transparent}
+.st-wrap:focus-visible{outline:2px solid #24a8f2;outline-offset:2px}
+.st-head{position:sticky;top:0;z-index:2;background:#000}
+.st-body{display:flex;flex-direction:column}
+.tr{display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr));align-items:center;border-bottom:1px solid rgba(240,240,250,.12)}
+.st-head .tr{border-bottom:1px solid rgba(240,240,250,.3)}
+.tr.gone{display:none}
+.st-body .tr:hover{background:#0d0d10}
+.th{display:flex}
+.th:not(.th-gauge){justify-content:flex-end}
+.sb{display:inline-flex;align-items:center;gap:8px;min-height:52px;padding:0 18px;border:0;background:none;cursor:pointer;color:#9a9aa6;font:400 13px/1 'D-DIN',Arial,sans-serif;letter-spacing:.1em;text-transform:uppercase;transition:color .2s}
+.th-gauge .sb{padding-left:0}
+.sb:hover,.sb.on{color:#f0f0fa}
+.sb .u{text-transform:none;letter-spacing:.04em;color:#6f6f7a}
+.sarr path{opacity:.35;transition:opacity .2s}
+.sb.asc .up,.sb.desc .dn{opacity:1}
+.td{padding:16px 18px;font-size:17px;text-align:right;font-variant-numeric:tabular-nums;color:#e4e4ee}
+.td-gauge{padding-left:0;text-align:left;font-weight:700;letter-spacing:.04em;color:#f0f0fa}
+.st-none{margin:0;padding:28px 0;font-size:16px;color:#c9c9d4}
+.st-note{margin-top:16px}
+@media (max-width: 760px){
+.st-count{margin-top:32px}
+.st-wrap{max-height:70vh}
+.tr{grid-template-columns:minmax(0,1.25fr) repeat(3,minmax(0,1fr))}
+.sb{padding:0 6px;font-size:11px;letter-spacing:.06em;gap:4px;min-height:48px;white-space:normal;text-align:right}
+.sb .u{display:none}
+.td{padding:14px 6px;font-size:14px}
+}
+
+.tf-hero{background:#000}
+.tfield{position:absolute;inset:0;width:100%;height:100%;display:block;
+  -webkit-mask-image:radial-gradient(115% 100% at 0% 100%,rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 50%,#000 76%);mask-image:radial-gradient(115% 100% at 0% 100%,rgba(0,0,0,0) 34%,rgba(0,0,0,.2) 50%,#000 76%);
+  animation:heroImg 2.4s cubic-bezier(.16,1,.3,1) both}
+.tfield ellipse,.tfield path{vector-effect:non-scaling-stroke;stroke-linejoin:round;stroke-linecap:round}
+.tfield .bk{fill:#000;stroke:#5c5c66;stroke-width:1}
+.tfield .bd{fill:#000;stroke:none}
+.tfield .ln{fill:none;stroke:#d9d9e4;stroke-width:1}
+.tfield .fr{fill:#000;stroke:#ededf6;stroke-width:1}
+.tfield .bo{fill:#000;stroke:#8c8c98;stroke-width:1}
+.tfield .hi .bo{stroke:#24a8f2}
+@media (max-width: 760px){
+.tfield{-webkit-mask-image:linear-gradient(180deg,#000 30%,rgba(0,0,0,.15) 62%,rgba(0,0,0,0) 78%);mask-image:linear-gradient(180deg,#000 30%,rgba(0,0,0,.15) 62%,rgba(0,0,0,0) 78%)}
+}
+</style>
+<script src="js/dc-lite.js"></script>
+</head>
+<body>
+<div id="app"></div>
+<template id="page">
+<div class="b-root">
+<a href="#main" class="skip">Skip to content</a>
+<header class="{{barCls}}">
+<a class="home" href="index.html" aria-label="Stratos home"><svg class="logo" viewBox="0 0 895.28 117.54" aria-hidden="true" style="fill: currentColor"><path d="M892.95,117.54c2.88.14,3.21-4.14.33-4.44-146.52-14.88-295.19-22.52-445.64-22.52S148.52,98.22,2,113.1c-2.87.29-2.55,4.58.33,4.44,147.53-7.19,295.99-10.83,445.31-10.83s297.78,3.64,445.31,10.83Z" style="fill: #24a8f2"></path><g><path d="M828.25,58.31c-3.82,3.73-9.27,5.81-14.74,5.82l-83.64.18.04-11.55,78.47-.07c4.91,0,7.99-2.81,8-7.3.01-3.94-2.83-7.42-7.5-7.41l-47.14.11c-6.72.02-13.22.03-19.53-1.38-8.39-1.87-13.43-8.46-13.29-16.98.09-5.29.69-10.79,4.82-14.54,3.51-3.18,8.63-4.84,13.78-4.86l80.75-.33c.21,4.17.39,7.79-.04,11.84l-75.72-.08c-4.21,0-7.1,2.44-7.37,5.99s1.86,7.76,6.38,7.78l53.7.19c5.78.02,11.17.55,16.43,2.39,7.4,2.59,11.29,9.18,10.9,17-.23,4.65-.52,9.51-4.3,13.2Z"></path> <path d="M158.13,60.44c-4.3,2.61-9.24,3.8-14.3,3.8l-79.9-.02-.59-11.6,78.08.05c4.79,0,7.79-3.29,7.75-7.17-.05-4.11-2.88-7.4-7.49-7.42l-56.51-.24c-6.3-.03-13.18-1.4-17.61-6.01-6.41-6.66-6.36-18.5-.57-25.58,3.29-4.02,9.13-5.88,14.43-5.9L160.24,0l.04,11.99-73.77-.15c-4.46,0-7.03,3.02-7.11,6.71-.1,4.22,2.81,7.09,7.53,7.1l51.39.04c4.91,0,9.53.56,14.08,1.59,8.61,1.96,12.94,9.17,12.67,17.85-.18,5.89-1.29,11.87-6.94,15.3Z"></path> <path d="M387.22,64.04c-6.75-.12-14.73,1.3-21.48-.2-9.79-6.17-18.15-13.82-27.17-21.16l-39.96-.21-.4,21.71-16.82.08.03-64.18,81.03.16c6.25.01,11.89,1.92,16.65,5.3,8.62,7.27,7.8,26.31-1.6,33.03-5.14,3.67-11.27,3.67-18.01,4.18l27.74,21.3ZM368.16,21.65c.03-5.33-3-9.74-8.59-9.76l-61.21-.24-.05,19.68,62.33-.3c5.22-.03,7.49-4.85,7.51-9.38Z"></path> <path d="M714.96,45.35c-.88,11.9-9.04,17.32-20.22,19.02l-68.8-.06c-12.01-1.9-20.02-7.01-20.73-19.99-.58-10.56-1.93-29.87,5.11-37.43,4.14-4.45,10.42-6.73,16.8-6.73l63.26.03c12.25,0,22.74,4.55,24.66,17.76.24,9.16.6,18.2-.08,27.4ZM688.37,52.57c6.02,0,9.61-4.67,9.64-9.81l.14-19.87c.05-6.76-4.56-11.12-11.44-11.11h-54.5c-6.01.02-9.88,4.48-9.89,9.99l-.05,20.65c-.02,5.87,4.25,10.23,10.38,10.22l55.72-.08Z"></path> <path d="M482.24,48.61l-60.21-.13-11.36,15.71-20.34-.07,30.76-40.5,13.14-17.8c1.85-2.51,4.21-5.4,7.54-5.43l18.25-.17c2.27-.02,5.11.63,6.69,2.68l47.07,61.16-20,.14-11.53-15.59ZM473.86,37.75l-17.64-23.7c-1.48-1.36-2.79-2.57-4.61-2.49-1.61.07-3.35.96-4.53,2.57l-17.55,23.86,44.34-.24Z"></path> <path d="M229.58,64.06l-17.19.53.07-52.56-40.55.15.19-12.04,97.12.05c.06,4.33.4,8.13-.11,11.82l-39.43.09-.1,51.96Z"></path> <path d="M556.41,64.23l-16.94-.07.06-52.18-40.42-.05c-.24-4.31-.21-7.8.04-11.84l97.53-.03c.46,4.13.33,7.7.1,11.91l-40.05.09-.33,52.17Z"></path></g></svg></a>
+<nav aria-label="Main">
+<ul class="links">
+<li><a class="nl" href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a class="nl" href="flat-sheet-cutting.html" aria-current="page">Flat Sheet Cutting</a></li><li><a class="nl" href="laser-welding.html">Laser Welding</a></li><li><a class="nl" href="centerless-grinding.html">Centerless Grinding</a></li><li><a class="nl" href="stocked-tubing.html">Stocked Tubing</a></li>
+<li class="{{ddCls}}"><button type="button" class="nl" aria-expanded="{{ddExp}}" aria-controls="company-menu" onClick="{{toggleDd}}">Company <svg class="chev" aria-hidden="true" width="10" height="10" viewBox="0 0 10 10" style="fill: none; stroke: currentColor; stroke-width: 1.5"><path d="M2 3.5L5 6.5L8 3.5"></path></svg></button>
+<ul id="company-menu" class="dd"><li><a href="company.html#why-stratos">Why Stratos</a></li><li><a href="company.html#mission">Mission Statement</a></li><li><a href="company.html#core-values">Core Values</a></li><li><a href="content.html">Content</a></li></ul></li>
+<li><a class="nl" href="contact.html">Contact</a></li>
+</ul>
+</nav>
+<button type="button" class="menu-btn" aria-label="Open menu" aria-expanded="{{menuExp}}" aria-controls="drawer" onClick="{{openMenu}}"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M3 7H21M3 12H21M3 17H21"></path></svg></button>
+</header>
+<sc-if value="{{menuOpen}}" hint-placeholder-val="{{ false }}">
+<button type="button" class="scrim" aria-label="Close menu" onClick="{{closeMenu}}"></button>
+<nav id="drawer" class="drawer" aria-label="Menu">
+<button type="button" class="x" aria-label="Close menu" onClick="{{closeMenu}}"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 22 22" style="fill: none; stroke: currentColor; stroke-width: 1.6"><path d="M4 4L18 18M18 4L4 18"></path></svg></button>
+<ul><li><a href="laser-cut-hypotubes.html">Laser Cut Hypotubes</a></li><li><a href="flat-sheet-cutting.html" aria-current="page">Flat Sheet Cutting</a></li><li><a href="laser-welding.html">Laser Welding</a></li><li><a href="centerless-grinding.html">Centerless Grinding</a></li><li><a href="stocked-tubing.html">Stocked Tubing</a></li></ul>
+<div class="grp">Company</div>
+<ul><li class="sub"><a href="company.html#why-stratos">Why Stratos</a></li><li class="sub"><a href="company.html#mission">Mission Statement</a></li><li class="sub"><a href="company.html#core-values">Core Values</a></li><li class="sub"><a href="content.html">Content</a></li><li><a href="contact.html">Contact</a></li></ul>
+</nav>
+</sc-if>
+<main id="main">
+<section id="top" class="panel pg-hero light " data-tone="light" aria-labelledby="top-h" style="height: {{secH}}">
+<img class="bg bg-flat" src="assets/b/b-flat.webp" alt="A perforated laser-cut band held on two wires, seen through a magnifier" fetchpriority="high" decoding="async">
+<div class="shade" aria-hidden="true"></div>
+<div class="copy">
+<h1 id="top-h" class="head">Flat sheet<br>cutting</h1>
+<p class="blurb">High-accuracy laser cutting for intricate micro-components from thin, medical-grade sheet.</p>
+<a class="sx-btn" href="contact.html">Send us your flat pattern <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+</section>
+<section id="numbers" class="blk" data-tone="dark" aria-label="Key figures">
+<ul class="stats"><li><span class="num">±.0005<small>in</small></span><span class="lab">Typical tolerance</span></li><li><span class="num">1M+<small></small></span><span class="lab">Pieces per order</span></li><li><span class="num">10+<small></small></span><span class="lab">Flat cutting machines</span></li></ul>
+
+</section>
+<section id="geometry" class="blk" data-tone="dark" aria-labelledby="geometry-h">
+<h2 id="geometry-h" class="h2">Intricate geometry, held to spec.</h2>
+
+<ul class="tiles"><li><h3>Precision cutting</h3><p>Tight tolerances and intricate features for complex device components.</p></li><li><h3>Material range</h3><p>Stainless steel, nitinol, cobalt-chrome and other specialty alloys.</p></li><li><h3>Custom geometry</h3><p>Complex patterns, slots and profiles built to your design.</p></li><li><h3>Prototype to production</h3><p>Rapid prototypes and efficient production at scale.</p></li><li><h3>Consistent quality</h3><p>Repeatable results, tight tolerances and clean edges.</p></li><li><h3>Custom software</h3><p>Smarter software that streamlines manufacturing and cuts lead time.</p></li></ul>
+</section>
+<section id="range" class="spec" data-tone="dark" aria-labelledby="range-h" style="min-height: {{secH}}">
+<div class="sc">
+<p class="kick">Specifications</p>
+<h2 id="range-h" class="h2">Process range.</h2>
+<p>Intricate micro-components cut from thin sheet, from first article to volume.</p>
+<table class="tbl"><tbody><tr><th scope="row">Typical tolerance</th><td>±.0005 in</td></tr><tr><th scope="row">Part size range</th><td>.005 in – 1 ft</td></tr><tr><th scope="row">Pieces per order</th><td>1 → 1M+</td></tr><tr><th scope="row">Flat cutting machines</th><td>10+</td></tr></tbody></table>
+</div>
+<div class="fig"><img src="assets/fig-flat-sheet.svg" alt="Line drawing of parts nested on a thin sheet under a laser head" loading="lazy"></div>
+</section>
+<section id="materials" class="spec" data-tone="dark" aria-labelledby="materials-h" style="min-height: {{secH}}">
+<div class="sc">
+<p class="kick">Materials</p>
+<h2 id="materials-h" class="h2">Metals cut to spec.</h2>
+<ul class="tabs" role="tablist" aria-label="Stainless steel and more"><li><button type="button" role="tab" id="mat-t0" class="{{matCls0}}" aria-selected="{{matSel0}}" aria-controls="mat-p" onClick="{{matGo0}}">Stainless steel</button></li><li><button type="button" role="tab" id="mat-t1" class="{{matCls1}}" aria-selected="{{matSel1}}" aria-controls="mat-p" onClick="{{matGo1}}">Nitinol</button></li><li><button type="button" role="tab" id="mat-t2" class="{{matCls2}}" aria-selected="{{matSel2}}" aria-controls="mat-p" onClick="{{matGo2}}">Cobalt-chromium</button></li></ul>
+<div id="mat-p" role="tabpanel"><sc-if value="{{matOn0}}" hint-placeholder-val="{{true}}"><p>Corrosion resistance, strength and biocompatibility for catheter shafts, implants and precision components.</p></sc-if><sc-if value="{{matOn1}}" hint-placeholder-val="{{false}}"><p>Shape-memory and superelastic behavior for minimally invasive devices needing flexibility and recovery.</p></sc-if><sc-if value="{{matOn2}}" hint-placeholder-val="{{false}}"><p>Exceptional strength, fatigue resistance and durability for implantable and structural components.</p></sc-if></div>
+<p>A wide range of medical-grade metals, processed on custom-built machinery. Don’t see the material you need? Let us know.</p>
+<a class="sx-btn" href="stocked-tubing.html">We stock millions of feet <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</div>
+<div class="fig"><sc-if value="{{matOn0}}" hint-placeholder-val="{{true}}"><div class="grades" aria-hidden="true"><span>304</span><span>316</span><span>17-7</span><em>Grades</em></div></sc-if><sc-if value="{{matOn1}}" hint-placeholder-val="{{false}}"><div class="grades" aria-hidden="true"><span>NiTi</span><em>Superelastic</em></div></sc-if><sc-if value="{{matOn2}}" hint-placeholder-val="{{false}}"><div class="grades" aria-hidden="true"><span>L605</span><span>MP35N</span><em>Grades</em></div></sc-if></div>
+</section>
+<section id="cleaning" class="spec three" data-tone="dark" aria-labelledby="cleaning-h" style="min-height: {{secH}}">
+<figure class="surf"><img src="assets/surface-as-cut.svg" alt="Ridge-line map of a surface as cut: sharp micro peaks and valleys" loading="lazy"><figcaption><b>Before</b> · As cut<span>Micro peaks and valleys left by cutting.</span></figcaption></figure>
+<figure class="surf"><img src="assets/surface-electropolished.svg" alt="Ridge-line map of the same surface electropolished: peaks leveled" loading="lazy"><figcaption><b>After</b> · Electropolished<span>Peaks leveled, valleys evened out.</span></figcaption></figure>
+<div class="sc">
+<p class="kick">Finishing</p>
+<h2 id="cleaning-h" class="h2">Clean, <span class="nw">burr-free</span> parts.</h2>
+<p>All parts undergo our custom cleaning and pickling process to remove surface oxides and burrs for a clean, consistent finish. The process follows ASTM A380 and has passed passivation testing.</p>
+<table class="tbl"><tbody><tr><th scope="row">Standard</th><td>ASTM A380</td></tr><tr><th scope="row">Passivation</th><td>Tested</td></tr></tbody></table>
+<p class="note">Illustrations · vertical scale exaggerated</p>
+</div>
+</section>
+<section id="start" class="cta" data-tone="dark" aria-labelledby="start-h">
+<div><h2 id="start-h" class="h2">Have a flat pattern?</h2><p class="lede">Send us your drawing. Expect a response within 24 hours.</p></div>
+<a class="sx-btn" href="contact.html">Send your drawing <svg class="arr" aria-hidden="true" width="13" height="12" viewBox="0 0 13 12" style="fill: none; stroke: currentColor; stroke-width: 1.4"><path d="M1 6H12M7 1L12 6L7 11"></path></svg></a>
+</section>
+</main>
+<footer class="foot">
+<span>Stratos Laser © 2026</span>
+<a href="mailto:info@stratoslaser.com">info@stratoslaser.com</a>
+<a href="contact.html">Contact</a>
+<a href="#">Privacy policy</a>
+</footer>
+</div>
+</template>
+<script>
+class Component extends DCLogic {
+  componentDidMount() {
+    this._y = window.scrollY || 0;
+    this._size = () => {
+      // On the canvas an artboard is as tall as the whole page, so a viewport-high panel would fill it: fall back to a laptop screen.
+      const h = window.innerHeight;
+      const secH = h > 1300 ? '900px' : Math.max(h, 620) + 'px';
+      if (secH !== (this.state && this.state.secH)) this.setState({ secH });
+      this._tone();
+    };
+    this._tone = () => {
+      const root = this._root || document;
+      const panels = root.querySelectorAll('[data-tone]');
+      let light = false;
+      panels.forEach((p) => { const r = p.getBoundingClientRect(); if (r.top <= 42 && r.bottom > 42) light = p.getAttribute('data-tone') === 'light'; });
+      if (light !== !!(this.state && this.state.light)) this.setState({ light });
+    };
+    this._scroll = () => {
+      const y = window.scrollY || 0, dy = y - this._y;
+      this._y = y;
+      let hide = this.state && this.state.hide;
+      if (y < 120) hide = false; else if (dy > 6) hide = true; else if (dy < -6) hide = false;
+      if (this.state && this.state.menuOpen) hide = false;
+      if (hide !== (this.state && this.state.hide)) this.setState({ hide, ddOpen: hide ? false : this.state.ddOpen });
+      this._tone();
+    };
+    this._key = (e) => { if (e.key === 'Escape' && this.state && (this.state.menuOpen || this.state.ddOpen)) this.setState({ menuOpen: false, ddOpen: false }); };
+    this._docClick = (e) => { if (this.state && this.state.ddOpen && !(e.target.closest && e.target.closest('.has-dd'))) this.setState({ ddOpen: false }); };
+    window.addEventListener('resize', this._size);
+    window.addEventListener('scroll', this._scroll, { passive: true });
+    document.addEventListener('keydown', this._key);
+    document.addEventListener('click', this._docClick);
+    this._size();
+    if (this._mountX) this._mountX();
+  }
+  componentWillUnmount() {
+    if (this._unmountX) this._unmountX();
+    window.removeEventListener('resize', this._size);
+    window.removeEventListener('scroll', this._scroll);
+    document.removeEventListener('keydown', this._key);
+    document.removeEventListener('click', this._docClick);
+  }
+  
+  renderVals() {
+    const s = this.state || {};
+    let bar = 'bar';
+    if (s.hide) bar += ' hide';
+    if (s.light) bar += ' light';
+    return {
+      secH: s.secH || '900px',
+      barCls: bar,
+      ddCls: s.ddOpen ? 'has-dd dd-open' : 'has-dd',
+      ddExp: s.ddOpen ? 'true' : 'false',
+      menuOpen: !!s.menuOpen,
+      matOn0: (s.mat || 0) === 0, matSel0: (s.mat || 0) === 0 ? 'true' : 'false', matCls0: (s.mat || 0) === 0 ? 'tab on' : 'tab', matGo0: () => this.setState({ mat: 0 }),
+      matOn1: (s.mat || 0) === 1, matSel1: (s.mat || 0) === 1 ? 'true' : 'false', matCls1: (s.mat || 0) === 1 ? 'tab on' : 'tab', matGo1: () => this.setState({ mat: 1 }),
+      matOn2: (s.mat || 0) === 2, matSel2: (s.mat || 0) === 2 ? 'true' : 'false', matCls2: (s.mat || 0) === 2 ? 'tab on' : 'tab', matGo2: () => this.setState({ mat: 2 }),
+      menuExp: s.menuOpen ? 'true' : 'false',
+      toggleDd: (e) => { if (e) e.stopPropagation(); this.setState({ ddOpen: !(this.state && this.state.ddOpen) }); },
+      openMenu: () => this.setState({ menuOpen: true, hide: false }),
+      closeMenu: () => this.setState({ menuOpen: false }),
+    };
+  }
+}
+DCLite.mount(document.getElementById('page'), Component, {}, document.getElementById('app'));
+</script>
+<script src="js/hairline-kernel.js"></script>
+<script src="js/hairline-figures.js"></script>
+</body>
+</html>
